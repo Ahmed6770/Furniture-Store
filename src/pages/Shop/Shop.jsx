@@ -62,63 +62,71 @@ function Shop() {
 
 
   return (
-    <div className="flex flex-col gap-8 lg:flex-row min-h-[60vh]">
-      <aside className="mt-10 w-full lg:w-72">
-        <FilterSidebar
-          handleCategoryChange={handleCategoryChange}
-          handlePriceChange={handlePriceChange}
-          ResetAll={ResetAll}
-          price={price}
-          selectedCategory={selectedCategory}
-        />
-      </aside>
-      <div className="flex-1">
-        <ShopHeader
-          productsCount={filteredProducts.length}
-          handleSearchChange={handleSearchChange}
-          search={search}
-          sortBy={sortBy}
-          handleSortChange={handleSortChange}
-        />
+    <div className="min-h-[60vh] space-y-6">
+      <ShopHeader
+        productsCount={filteredProducts.length}
+        handleSearchChange={handleSearchChange}
+        search={search}
+        sortBy={sortBy}
+        handleSortChange={handleSortChange}
+        handleCategoryChange={handleCategoryChange}
+        handlePriceChange={handlePriceChange}
+        ResetAll={ResetAll}
+        price={price}
+        selectedCategory={selectedCategory}
+      />
 
-        {loading ? (
-          <div className="py-20 text-center">
-            <div className="mx-auto h-12 w-12 animate-spin rounded-full border-4 border-stone-200 border-t-[#b53d5d]"></div>
-            <p className="mt-4 text-base font-semibold text-stone-700">Loading catalog...</p>
-            <p className="mt-1 text-xs text-stone-400">Fetching the latest furniture pieces for you</p>
-          </div>
-        ) : error && products.length === 0 ? (
-          <div className="py-20 text-center">
-            <p className="text-lg font-bold text-red-600">Unable to load products</p>
-            <p className="mt-2 text-sm text-stone-500">Please check your connection and try refreshing the page.</p>
-          </div>
-        ) : sortedProducts.length === 0 ? (
-          <EmptyState
-            icon={<SearchX size={64} />}
-            title="No products found"
-            description="We couldn't find any products matching your search or selected filters."
-            buttonText="Clear Filters"
-            onClick={ResetAll}
+      <div className="flex flex-col gap-6 px-4 sm:px-6 lg:flex-row lg:gap-8 lg:px-8">
+        <aside className="hidden lg:block w-72 lg:mt-2">
+          <FilterSidebar
+            handleCategoryChange={handleCategoryChange}
+            handlePriceChange={handlePriceChange}
+            ResetAll={ResetAll}
+            price={price}
+            selectedCategory={selectedCategory}
           />
-        ) : (
-          <>
-            <ProductGrid
-              products={sortedProducts.slice(startIndex, endIndex)}
-            />
-            <div className="mt-8 flex justify-center">
-              <NavigationControls
-                onPrevious={goToPreviousPage}
-                onNext={goToNextPage}
-                isPreviousDisabled={currentPage === 1}
-                isNextDisabled={currentPage === totalPages}
-              >
-                <p className="min-w-24 text-center text-sm font-medium text-stone-600">
-                  Page {currentPage} of {totalPages}
-                </p>
-              </NavigationControls>
+        </aside>
+
+        <div className="flex-1">
+          {loading ? (
+            <div className="py-20 text-center">
+              <div className="mx-auto h-12 w-12 animate-spin rounded-full border-4 border-stone-200 border-t-[#B88746]"></div>
+              <p className="mt-4 text-base font-semibold text-stone-700">Loading catalog...</p>
+              <p className="mt-1 text-xs text-stone-400">Fetching the latest furniture pieces for you</p>
             </div>
-          </>
-        )}
+          ) : error && products.length === 0 ? (
+            <div className="py-20 text-center">
+              <p className="text-lg font-bold text-red-600">Unable to load products</p>
+              <p className="mt-2 text-sm text-stone-500">Please check your connection and try refreshing the page.</p>
+            </div>
+          ) : sortedProducts.length === 0 ? (
+            <EmptyState
+              icon={<SearchX size={64} />}
+              title="No products found"
+              description="We couldn't find any products matching your search or selected filters."
+              buttonText="Clear Filters"
+              onClick={ResetAll}
+            />
+          ) : (
+            <>
+              <ProductGrid
+                products={sortedProducts.slice(startIndex, endIndex)}
+              />
+              <div className="mt-8 flex justify-center">
+                <NavigationControls
+                  onPrevious={goToPreviousPage}
+                  onNext={goToNextPage}
+                  isPreviousDisabled={currentPage === 1}
+                  isNextDisabled={currentPage === totalPages}
+                >
+                  <p className="min-w-24 text-center text-sm font-medium text-stone-600">
+                    Page {currentPage} of {totalPages}
+                  </p>
+                </NavigationControls>
+              </div>
+            </>
+          )}
+        </div>
       </div>
     </div>
   );

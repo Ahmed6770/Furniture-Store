@@ -1,5 +1,5 @@
 import { createContext, useState, useEffect } from "react";
-import { getProducts } from "../services/productsApi";
+
 export const ProductsContext = createContext();
 
 function ProductsProvider({ children }) {
@@ -11,10 +11,14 @@ function ProductsProvider({ children }) {
   useEffect(() => {
     async function loadProducts() {
       try {
-        const data = await getProducts();
+        const response = await fetch("/data/products.json");
+        if (!response.ok) {
+          throw new Error("Failed to load products");
+        }
+        const data = await response.json();
         setProducts(data);
-      } catch (error) {
-        setError(error);
+      } catch (err) {
+        setError(err);
       } finally {
         setLoading(false);
       }

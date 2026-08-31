@@ -21,7 +21,7 @@ function ProductGallery({ product }) {
         {galleryImages.slice(0, 4).map((image, index) => (
           <button key={index}
             onClick={() => setSelectedImage(image)}
-            className={`overflow-hidden rounded-2xl border-2 transition-all duration-300 ${
+            className={`cursor-pointer overflow-hidden rounded-2xl border-2 transition-all duration-300 ${
               selectedImage === image
                 ? "border-[#B88746]"
                 : "border-transparent hover:border-stone-300"

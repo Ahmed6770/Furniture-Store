@@ -85,23 +85,18 @@ function FilterSidebar({
   return (
     <>
       {/* Mobile Filter Toggle Button */}
-      <div className="lg:hidden">
+      <div className="lg:hidden w-full">
         <button
           type="button"
           onClick={() => setIsOpenMobile(true)}
-          className="flex w-full cursor-pointer items-center justify-between rounded-2xl border border-stone-200 bg-white p-4 shadow-xs transition hover:border-amber-600/50"
+          className="flex w-full cursor-pointer items-center justify-center gap-2 rounded-lg border border-gray-300 bg-white px-3 sm:px-4 py-2.5 text-sm font-semibold text-stone-800 transition hover:border-amber-700"
         >
-          <div className="flex items-center gap-2 font-semibold text-stone-900">
-            <SlidersHorizontal size={20} className="text-amber-700" />
-            <span>Filters & Sorting</span>
-          </div>
-
-          {activeFiltersCount > 0 ? (
-            <span className="flex h-6 w-6 items-center justify-center rounded-full bg-amber-700 text-xs font-bold text-white">
+          <SlidersHorizontal size={17} className="text-amber-700" />
+          <span>Filters</span>
+          {activeFiltersCount > 0 && (
+            <span className="flex h-5 w-5 items-center justify-center rounded-full bg-amber-700 text-[11px] font-bold text-white">
               {activeFiltersCount}
             </span>
-          ) : (
-            <span className="text-xs text-stone-400">Tap to filter</span>
           )}
         </button>
       </div>

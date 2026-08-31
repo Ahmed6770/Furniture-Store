@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
-import filters from "../pages/Shop/components/categoryKeywords.js";
 
 function useShopFilters(products) {
   const location = useLocation();
@@ -43,13 +42,11 @@ function useShopFilters(products) {
     const matchesPrice = product.price <= price; // Price
     let matchesCategory = true; // Category
 
-    // If condition
+    // Category filtering
     if (selectedCategory.length > 0) {
-      const text = `${product.name || ""} ${product.category || ""}`.toLowerCase();
-      matchesCategory = selectedCategory.some((category) => {
-        const keywords = filters[category] || [category];
-        return keywords.some((keyword) => text.includes(keyword.toLowerCase()));
-      });
+      matchesCategory = selectedCategory.some(
+        (cat) => (product.category || "").toLowerCase() === cat.toLowerCase()
+      );
     }
     return matchesPrice && matchesCategory && matchesSearch;
   });

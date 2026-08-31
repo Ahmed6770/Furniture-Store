@@ -21,10 +21,10 @@ function CategoryCard({ category }) {
       {/* Content */}
       <div className="p-6">
         <div className="flex items-center justify-between">
-          <h2 className="text-lg font-bold text-stone-900 transition group-hover:text-[#b53d5d]">
+          <h2 className="text-lg font-bold text-stone-900 transition group-hover:text-[#b88746]">
             {category.name}
           </h2>
-          <div className="flex h-8 w-8 items-center justify-center rounded-full bg-stone-100 text-stone-700 transition group-hover:bg-[#b53d5d] group-hover:text-white">
+          <div className="flex h-8 w-8 items-center justify-center rounded-full bg-stone-100 text-stone-700 transition group-hover:bg-[#b88746] group-hover:text-white">
             <ArrowRight size={16} />
           </div>
         </div>

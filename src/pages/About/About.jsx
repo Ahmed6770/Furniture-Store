@@ -8,19 +8,19 @@ function About() {
   return (
     <div className="min-h-screen bg-white font-sans text-stone-800 space-y-12">
       <Reveal>
-      <AboutHero />
+        <AboutHero />
       </Reveal>
 
       <Reveal>
-      <WhoWeAre />
+        <WhoWeAre />
       </Reveal>
 
       <Reveal>
-      <WhyChoose />
+        <WhyChoose />
       </Reveal>
-      
+
       <Reveal>
-      <OurClients />
+        <OurClients />
       </Reveal>
     </div>
   );

@@ -34,7 +34,7 @@ function ProductFeatures() {
         {features.map((feature) => {
           const Icon = feature.icon;
           return (
-            <div className="rounded-3xl border border-stone-200 p-6 sm:p-8 transition duration-300 hover:-translate-y-1 hover:shadow-lg"
+            <div className="rounded-3xl border border-stone-200 p-6 sm:p-8 "
               key={feature.title}>
               <div className="mb-5 flex h-12 w-12 sm:h-14 sm:w-14 items-center justify-center rounded-2xl bg-[#B88746]/10 text-[#B88746]">
                 <Icon size={28} />

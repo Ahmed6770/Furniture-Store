@@ -12,12 +12,6 @@ function HeroHome() {
           {/* Left Side */}
           <div className="flex flex-col items-center text-center lg:col-span-5 lg:items-start lg:text-left">
             <div className="flex flex-col items-center space-y-4 lg:items-start lg:space-y-5">
-              
-              {/* Badge */}
-              <p className="inline-flex items-center gap-1.5 rounded-full border border-line bg-surface px-4 py-1.5 text-xs font-semibold text-brand sm:text-sm">
-                <Sparkles size={14} className="text-brand" />
-                Modern Furniture Collection
-              </p>
 
               {/* Title */}
               <h1 className="max-w-xl text-3xl font-bold leading-[1.1] text-stone-900 sm:text-4xl lg:text-5xl">
@@ -45,16 +39,14 @@ function HeroHome() {
 
               {/* Buttons */}
               <div className="flex flex-row items-center justify-center gap-3 pt-1 lg:justify-start">
-                <Link
+                <Link className="inline-flex h-11 items-center justify-center rounded-full bg-stone-900 px-6 text-xs font-semibold text-white transition-colors hover:bg-brand sm:text-sm"
                   to="/shop"
-                  className="inline-flex h-11 items-center justify-center rounded-full bg-stone-900 px-6 text-xs font-semibold text-white transition-colors hover:bg-brand sm:text-sm"
                 >
                   Shop Now
                 </Link>
 
-                <Link
+                <Link className="inline-flex h-11 items-center justify-center rounded-full border border-stone-300 px-5 text-xs font-semibold text-stone-700 transition-colors hover:border-brand hover:text-brand sm:text-sm"
                   to="/shop"
-                  className="inline-flex h-11 items-center justify-center rounded-full border border-stone-300 px-5 text-xs font-semibold text-stone-700 transition-colors hover:border-brand hover:text-brand sm:text-sm"
                 >
                   Browse Collection
                 </Link>
@@ -67,8 +59,7 @@ function HeroHome() {
           {/* Right Side on Desktop */}
           <div className="hidden w-full lg:col-span-7 lg:block">
             <div className="overflow-hidden rounded-3xl border border-stone-100 shadow-sm">
-              <img
-                className="h-[480px] w-full object-cover"
+              <img className="h-[480px] w-full object-cover"
                 src={heroImage}
                 alt="Modern Living Room"
               />

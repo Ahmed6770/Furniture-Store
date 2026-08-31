@@ -67,17 +67,17 @@ function ProductInfo({ product }) {
         {product.description}
       </p>
 
-      {/* Quantity */}
-      <div className="mt-10 flex flex-col gap-4 sm:flex-row sm:items-center">
-        <div className="flex items-center overflow-hidden rounded-xl border border-stone-300">
-          <button className="cursor-pointer p-3 sm:p-4 transition hover:bg-stone-100"
+      {/* Quantity*/}
+      <div className="mt-10 flex items-center gap-3 sm:gap-4">
+        <div className="flex items-center shrink-0 overflow-hidden rounded-xl border border-stone-300 bg-white">
+          <button className="cursor-pointer px-2.5 py-3.5 sm:p-4 transition hover:bg-stone-100 text-stone-700"
             onClick={decreaseQuantity}
           >
             <Minus size={18} />
           </button>
-          <span className="w-14 text-center font-semibold">{quantity}</span>
+          <span className="w-9 sm:w-12 text-center font-semibold text-stone-900 text-sm sm:text-base">{quantity}</span>
           <button
-            className="cursor-pointer p-3 sm:p-4 transition hover:bg-stone-100"
+            className="cursor-pointer px-2.5 py-3.5 sm:p-4 transition hover:bg-stone-100 text-stone-700"
             onClick={increaseQuantity}
           >
             <Plus size={18} />
@@ -85,8 +85,8 @@ function ProductInfo({ product }) {
         </div>
 
         <button
-          className={`cursor-pointer flex w-full flex-1 items-center justify-center gap-3 rounded-xl px-6 py-4 
-            font-semibold text-white transition-all duration-300 sm:w-auto ${
+          className={`cursor-pointer flex flex-1 items-center justify-center gap-2 sm:gap-3 rounded-xl px-4 sm:px-6 py-3.5 sm:py-4 
+            text-sm sm:text-base font-semibold text-white transition-all duration-300 ${
             isAdded
               ? "bg-emerald-700 scale-98"
               : "bg-[#B88746] hover:bg-[#a67637]"
@@ -95,12 +95,12 @@ function ProductInfo({ product }) {
         >
           {isAdded ? (
             <>
-              <Check size={20} />
+              <Check size={18} className="sm:w-5 sm:h-5" />
               <span>Added to Cart!</span>
             </>
           ) : (
             <>
-              <ShoppingCart size={20} />
+              <ShoppingCart size={18} className="sm:w-5 sm:h-5" />
               <span>Add To Cart</span>
             </>
           )}

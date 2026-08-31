@@ -1,6 +1,18 @@
 import { Search } from "lucide-react";
+import FilterSidebar from "./FilterSidebar.jsx";
 
-function ShopHeader({ productsCount, search, handleSearchChange, sortBy, handleSortChange }) {
+function ShopHeader({
+  productsCount,
+  search,
+  handleSearchChange,
+  sortBy,
+  handleSortChange,
+  handleCategoryChange,
+  handlePriceChange,
+  price,
+  selectedCategory,
+  ResetAll,
+}) {
 
   return (
     <section className="border-b border-gray-200">
@@ -26,14 +38,27 @@ function ShopHeader({ productsCount, search, handleSearchChange, sortBy, handleS
             />
           </div>
 
-          {/* Sort */}
-          <select className="rounded-lg border border-gray-300 px-4 py-2.5 text-sm outline-none transition focus:border-amber-700"
-          value={sortBy} onChange={handleSortChange}>
-            <option value="featured">Featured</option>
-            <option value="priceLow">Price: Low to High</option>
-            <option value="priceHigh">Price: High to Low</option>
-            <option value="highestRated">Highest Rated</option>
-          </select>
+          {/* Sort & Mobile Filter */}
+          <div className="flex items-center gap-3 w-full sm:w-auto">
+            <select className="flex-1 sm:flex-none rounded-lg border border-gray-300 px-4 py-2.5 text-sm outline-none transition focus:border-amber-700 bg-white cursor-pointer"
+              value={sortBy} onChange={handleSortChange}>
+              <option value="featured">Featured</option>
+              <option value="priceLow">Price: Low to High</option>
+              <option value="priceHigh">Price: High to Low</option>
+              <option value="highestRated">Highest Rated</option>
+            </select>
+
+            {/* Mobile filter buttons */}
+            <div className="flex-1 lg:hidden">
+              <FilterSidebar
+                handleCategoryChange={handleCategoryChange}
+                handlePriceChange={handlePriceChange}
+                ResetAll={ResetAll}
+                price={price}
+                selectedCategory={selectedCategory}
+              />
+            </div>
+          </div>
         </div>
       </div>
     </section>

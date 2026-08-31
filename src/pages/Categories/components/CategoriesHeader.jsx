@@ -1,9 +1,6 @@
 function CategoriesHeader() {
   return (
     <div className="mb-12 text-center">
-      <p className="text-xs font-bold tracking-[0.25em] uppercase text-[#b53d5d]">
-        Explore Collections
-      </p>
       <h1 className="mt-3 text-3xl font-extrabold text-stone-900 sm:text-4xl md:text-5xl">
         Browse by Category
       </h1>
