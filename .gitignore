@@ -22,7 +22,9 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
-data.json
+# Data files
+public/data/
+public/data/products.json
 
 # Environment variables
 .env
