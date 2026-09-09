@@ -45,21 +45,11 @@ function Shop() {
     1,
     Math.ceil(sortedProducts.length / productsPerPage),
   );
-  function goToNextPage() {
-    if (currentPage < totalPages) {
-      setCurrentPage((prev) => prev + 1);
-    }
-  }
-  function goToPreviousPage() {
-    if (currentPage > 1) {
-      setCurrentPage((prev) => prev - 1);
-    }
-  }
+
   // Resets the pages number when searching
   useEffect(() => {
     setCurrentPage(1);
   }, [search, selectedCategory, price, sortBy]);
-
 
   return (
     <div className="min-h-[60vh] space-y-6">
@@ -91,13 +81,21 @@ function Shop() {
           {loading ? (
             <div className="py-20 text-center">
               <div className="mx-auto h-12 w-12 animate-spin rounded-full border-4 border-stone-200 border-t-[#B88746]"></div>
-              <p className="mt-4 text-base font-semibold text-stone-700">Loading catalog...</p>
-              <p className="mt-1 text-xs text-stone-400">Fetching the latest furniture pieces for you</p>
+              <p className="mt-4 text-base font-semibold text-stone-700">
+                Loading catalog...
+              </p>
+              <p className="mt-1 text-xs text-stone-400">
+                Fetching the latest furniture pieces for you
+              </p>
             </div>
           ) : error && products.length === 0 ? (
             <div className="py-20 text-center">
-              <p className="text-lg font-bold text-red-600">Unable to load products</p>
-              <p className="mt-2 text-sm text-stone-500">Please check your connection and try refreshing the page.</p>
+              <p className="text-lg font-bold text-red-600">
+                Unable to load products
+              </p>
+              <p className="mt-2 text-sm text-stone-500">
+                Please check your connection and try refreshing the page.
+              </p>
             </div>
           ) : sortedProducts.length === 0 ? (
             <EmptyState
@@ -114,15 +112,10 @@ function Shop() {
               />
               <div className="mt-8 flex justify-center">
                 <NavigationControls
-                  onPrevious={goToPreviousPage}
-                  onNext={goToNextPage}
-                  isPreviousDisabled={currentPage === 1}
-                  isNextDisabled={currentPage === totalPages}
-                >
-                  <p className="min-w-24 text-center text-sm font-medium text-stone-600">
-                    Page {currentPage} of {totalPages}
-                  </p>
-                </NavigationControls>
+                  currentPage={currentPage}
+                  totalPages={totalPages}
+                  onPageChange={setCurrentPage}
+                />
               </div>
             </>
           )}

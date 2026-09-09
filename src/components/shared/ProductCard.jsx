@@ -55,12 +55,12 @@ function ProductCard({ product }) {
             {isAdded ? (
               <>
                 <Check size={13} className="shrink-0" />
-                <span className="whitespace-nowrap">Added!</span>
+                <span className="whitespace-nowrap">Added to cart!</span>
               </>
             ) : (
               <>
                 <ShoppingCart size={13} className="shrink-0" />
-                <span className="whitespace-nowrap">Add</span>
+                <span className="whitespace-nowrap">Add to cart</span>
               </>
             )}
           </button>

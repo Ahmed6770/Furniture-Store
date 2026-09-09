@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import Card from "./CategoryCard.jsx";
-import { useRef } from "react";
-import NavigationControls from "../../../components/shared/NavigationControls.jsx";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
 
 import livingRoom from "../../../assets/images/categories/livingroom.png";
 import bedRoom from "../../../assets/images/categories/bedroom.png";
@@ -13,27 +13,6 @@ import storage from "../../../assets/images/categories/storage.png";
 import lighting from "../../../assets/images/categories/lighting.png";
 
 function Categories() {
-  const sliderRef = useRef(null);
-
-  // Scroll function 
-  function scrollNext() {
-    if (sliderRef.current) {
-      sliderRef.current.scrollBy({
-        left: 300,
-        behavior: "smooth", 
-      });
-    }
-  }
-
-  function scrollPrev() {
-    if (sliderRef.current) {
-      sliderRef.current.scrollBy({
-        left: -300,
-        behavior: "smooth",
-      });
-    }
-  }
-
   return (
     <section className="bg-white py-12">
       <div className="mx-auto max-w-375 px-4">
@@ -43,29 +22,31 @@ function Categories() {
             Shop by Category
           </h2>
 
-          <Link className="shrink-0 text-sm font-medium text-stone-600 transition hover:text-[#B88746]"
-            to="/categories">
+          <Link
+            className="shrink-0 text-sm font-medium text-stone-600 transition hover:text-[#B88746]"
+            to="/categories"
+          >
             View All →
           </Link>
         </div>
 
-        <div className="relative">
-          {/* Categories */}
-          <div className="hide-scrollbar flex overflow-x-auto scroll-smooth" ref={sliderRef}>
-            {categoriesData.map((category) => (
-              <div key={category.id} className="w-[80%] sm:w-1/2 md:w-1/3 lg:w-1/4 shrink-0 px-2.5">
-                <Card category={category} />
-              </div>
-            ))}
-          </div>
-
-          {/* Navigation */}
-          <NavigationControls
-            className="flex absolute inset-y-0 -left-1 -right-1 sm:-left-5 sm:-right-5 items-center justify-between pointer-events-none z-10"
-            onPrevious={scrollPrev}
-            onNext={scrollNext}
-          />
-        </div>
+        {/* Categories Slider */}
+        <Swiper
+          spaceBetween={16}
+          slidesPerView={1.25}
+          breakpoints={{
+            640: { slidesPerView: 2.2, spaceBetween: 16 },
+            768: { slidesPerView: 3.2, spaceBetween: 20 },
+            1024: { slidesPerView: 4, spaceBetween: 24 },
+          }}
+          className="cursor-grab active:cursor-grabbing py-2"
+        >
+          {categoriesData.map((category) => (
+            <SwiperSlide key={category.id}>
+              <Card category={category} />
+            </SwiperSlide>
+          ))}
+        </Swiper>
       </div>
     </section>
   );
