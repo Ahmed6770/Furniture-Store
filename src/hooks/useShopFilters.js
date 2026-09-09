@@ -34,7 +34,7 @@ function useShopFilters(products) {
     }
   }
   ////// filtering //////
-  
+
   const filteredProducts = (products || []).filter((product) => {
     const matchesSearch =
       (product.name || "").toLowerCase().includes(search.toLowerCase()) ||
@@ -45,7 +45,7 @@ function useShopFilters(products) {
     // Category filtering
     if (selectedCategory.length > 0) {
       matchesCategory = selectedCategory.some(
-        (cat) => (product.category || "").toLowerCase() === cat.toLowerCase()
+        (cat) => (product.category || "").toLowerCase() === cat.toLowerCase(),
       );
     }
     return matchesPrice && matchesCategory && matchesSearch;
@@ -54,31 +54,31 @@ function useShopFilters(products) {
   // SortBy filter
   const sortedProducts = [...filteredProducts];
   if (sortBy === "priceLow") {
-      sortedProducts.sort((a, b) => {
-        return a.price - b.price;
-      });
+    sortedProducts.sort((a, b) => {
+      return a.price - b.price;
+    });
   }
   if (sortBy === "priceHigh") {
     sortedProducts.sort((a, b) => {
-        return b.price - a.price;
-      });
+      return b.price - a.price;
+    });
   }
   if (sortBy === "highestRated") {
     sortedProducts.sort((a, b) => {
-        return a.rating - b.rating;
-      });
+      return b.rating - a.rating;
+    });
   }
   // Price function
   function handlePriceChange(event) {
-    setPrice(Number(event.target.value))
+    setPrice(Number(event.target.value));
   }
 
   // Reset function
   function ResetAll() {
-    setPrice(3000)
-    setSelectedCategory([])
+    setPrice(3000);
+    setSelectedCategory([]);
     setSearch("");
-    setSortBy("featured")
+    setSortBy("featured");
   }
 
   // Search function
@@ -92,20 +92,20 @@ function useShopFilters(products) {
   }
 
   // return
-return {
-  search,
-  setSearch,
-  selectedCategory,
-  price,
-  sortBy,
-  filteredProducts,
-  sortedProducts,
-  handleCategoryChange,
-  handlePriceChange,
-  handleSearchChange,
-  handleSortChange,
-  ResetAll,
-};
+  return {
+    search,
+    setSearch,
+    selectedCategory,
+    price,
+    sortBy,
+    filteredProducts,
+    sortedProducts,
+    handleCategoryChange,
+    handlePriceChange,
+    handleSearchChange,
+    handleSortChange,
+    ResetAll,
+  };
 }
 
 export default useShopFilters;

@@ -10,32 +10,32 @@ function Home() {
 
   return (
     <div className="space-y-6">
-      <Reveal> 
-      <HeroHome />
-      </Reveal>
-
-      <Reveal> 
-      <Categories />
-      </Reveal>
-
-      <Reveal>       
-      <Collection />
+      <Reveal>
+        <HeroHome />
       </Reveal>
 
       <Reveal>
-      <ProductsSlider
-        title="New Arrivals"
-        description="Discover our newest furniture collection."
-        products={products.slice(0, 8)}
-      />
+        <Categories />
       </Reveal>
-      
+
       <Reveal>
-      <ProductsSlider
-        title="Best Sellers"
-        description="Our most loved furniture pieces."
-        products={products.slice(8, 16)}
-      />
+        <Collection />
+      </Reveal>
+
+      <Reveal>
+        <ProductsSlider
+          title="New Arrivals"
+          description="Discover our newest furniture collection."
+          products={products.slice(161, 171)}
+        />
+      </Reveal>
+
+      <Reveal>
+        <ProductsSlider
+          title="Best Sellers"
+          description="Our most loved furniture pieces."
+          products={products.slice(190, 200)}
+        />
       </Reveal>
     </div>
   );
