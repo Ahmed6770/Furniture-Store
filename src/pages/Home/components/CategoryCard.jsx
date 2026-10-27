@@ -21,11 +21,11 @@ function CategoryCard({ category }) {
       </div>
 
       <div className="mt-3 flex items-center justify-between gap-3 px-1">
-        <h3 className="text-sm font-semibold text-stone-900 transition-colors duration-300 group-hover:text-brand lg:text-base">
+        <h3 className="text-sm font-semibold text-stone-900 transition-colors duration-300 group-hover:text-amber-700 lg:text-base">
           {category.title}
         </h3>
 
-        <ArrowUpRight className="text-brand transition-transform duration-300"
+        <ArrowUpRight className="text-amber-700 transition-transform duration-300"
           size={18}
         />
       </div>

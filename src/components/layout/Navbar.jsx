@@ -1,7 +1,7 @@
 import { useState, useContext } from "react";
 import { ShoppingCart, Search, Menu, X } from "lucide-react";
 import { NavLink, useNavigate } from "react-router-dom";
-import logo from "../../assets/images/logo.png";
+import logo from "../../assets/images/logo.webp";
 import { CartContext } from "../../context/CartContext.jsx";
 
 // search function
@@ -13,10 +13,12 @@ function SearchInput({ isMobile, search, setSearch, handleSearchSubmit }) {
       <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-stone-400"
         size={18}
       />
-      <input className={`rounded-full border border-stone-300 bg-surface py-2 pl-11 pr-4 outline-none placeholder:text-sm
-      placeholder:text-stone-400 transition-all duration-300 focus:border-brand focus:ring-2 focus:ring-brand/30 text-stone-900 ${isMobile ? "w-full h-11" : "w-72"}`}
+      <input className={`rounded-full border border-stone-300 bg-white py-2 pl-11 pr-4 outline-none placeholder:text-sm
+      placeholder:text-stone-400 transition-all duration-300 focus:border-amber-700 focus:ring-2 focus:ring-amber-700/30
+        text-stone-900 ${isMobile ? "w-full h-11" : "w-72"}`}
         type="search" placeholder="Search for furniture..."
         value={search}
+        aria-label="Search furniture"
         onChange={(event) => setSearch(event.target.value)}
       />
     </form>
@@ -50,7 +52,7 @@ function Navbar() {
   ];
 
   return (
-    <nav className="relative border-b border-line bg-canvas">
+    <nav className="relative border-b border-stone-200 bg-stone-50">
       <div className="mx-auto flex h-20 w-full max-w-[1500px] items-center justify-between px-6 lg:px-8">
         <NavLink to="/" className="flex items-center gap-2">
           <img className="h-12 w-12 lg:h-16 lg:w-16"
@@ -64,7 +66,7 @@ function Navbar() {
         <div className="hidden items-center gap-8 lg:flex">
           {navLinks.map((link) => (
             <NavLink className={({ isActive }) =>
-                `relative font-medium transition-colors duration-300 ${isActive ? "text-brand font-semibold" : "text-stone-700 hover:text-stone-900"}`
+                `relative font-medium transition-colors duration-300 ${isActive ? "text-amber-700 font-semibold" : "text-stone-700 hover:text-stone-900"}`
               }
               to={link.path} key={link.path}                           
             >
@@ -78,14 +80,15 @@ function Navbar() {
             search={search}
             setSearch={setSearch}
             handleSearchSubmit={handleSearchSubmit}
+            aria-label="Search furniture"
           />
           {/* Cart btn */}
-          <NavLink className="relative text-stone-700 transition-all duration-300 hover:-translate-y-0.5 hover:text-brand"
-            to="/cart" id="navbar-cart-icon"
+          <NavLink className="relative text-stone-700 transition-all duration-300 hover:-translate-y-0.5 hover:text-amber-700"
+            to="/cart" aria-label="Open cart"
           >
             <ShoppingCart size={24} />
             {totalCartCount > 0 && (
-              <span className="absolute -top-1.5 -right-2 flex h-5 w-5 items-center justify-center rounded-full bg-[#b53d5d] text-[10px] font-bold text-white shadow-xs">
+              <span className="absolute -top-1.5 -right-2 flex h-5 w-5 items-center justify-center rounded-full bg-rose-600 text-[10px] font-bold text-white shadow-xs">
                 {totalCartCount}
               </span>
             )}
@@ -94,6 +97,7 @@ function Navbar() {
           <button className="rounded-md p-1 transition hover:bg-stone-100 lg:hidden"
             type="button"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            aria-label={isMobileMenuOpen ? "close the menu" : "Open the menu"}
           >
             {isMobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
           </button>
@@ -101,7 +105,7 @@ function Navbar() {
       </div>
           {/* Mobile Menu */}
       {isMobileMenuOpen && (
-        <div className="absolute left-0 top-full z-50 w-full border-t border-line bg-canvas p-4 shadow-md lg:hidden">
+        <div className="absolute left-0 top-full z-50 w-full border-t border-stone-200 bg-stone-50 p-4 shadow-md lg:hidden">
           <SearchInput
             isMobile={true}
             search={search}
@@ -112,7 +116,7 @@ function Navbar() {
           <div className="flex flex-col space-y-1">
             {navLinks.map((link) => (
               <NavLink className={({ isActive }) =>
-                  `px-4 py-3 rounded-lg font-medium transition-colors ${isActive ? "bg-stone-100 text-[#b53d5d] font-semibold" : "text-stone-700 hover:bg-stone-50"}`
+                  `px-4 py-3 rounded-lg font-medium transition-colors ${isActive ? "bg-stone-100 text-amber-700 font-semibold" : "text-stone-700 hover:bg-stone-50"}`
                 }
                 to={link.path} key={link.path}
                 onClick={() => setIsMobileMenuOpen(false)}

@@ -17,7 +17,7 @@ function HeroHome() {
               <h1 className="max-w-xl text-3xl font-bold leading-[1.1] text-stone-900 sm:text-4xl lg:text-5xl">
                 Furniture That
                 <br className="hidden lg:inline" />{" "}
-                <span className="text-brand">Fits Your Life.</span>
+                <span className="text-amber-700">Fits Your Life.</span>
               </h1>
 
               {/* Image - Mobile Only */}
@@ -39,13 +39,13 @@ function HeroHome() {
 
               {/* Buttons */}
               <div className="flex flex-row items-center justify-center gap-3 pt-1 lg:justify-start">
-                <Link className="inline-flex h-11 items-center justify-center rounded-full bg-stone-900 px-6 text-xs font-semibold text-white transition-colors hover:bg-brand sm:text-sm"
+                <Link className="inline-flex h-11 items-center justify-center rounded-full bg-stone-900 px-6 text-xs font-semibold text-white transition-colors hover:bg-amber-700 sm:text-sm"
                   to="/shop"
                 >
                   Shop Now
                 </Link>
 
-                <Link className="inline-flex h-11 items-center justify-center rounded-full border border-stone-300 px-5 text-xs font-semibold text-stone-700 transition-colors hover:border-brand hover:text-brand sm:text-sm"
+                <Link className="inline-flex h-11 items-center justify-center rounded-full border border-stone-300 px-5 text-xs font-semibold text-stone-700 transition-colors hover:border-amber-700 hover:text-amber-700 sm:text-sm"
                   to="/shop"
                 >
                   Browse Collection

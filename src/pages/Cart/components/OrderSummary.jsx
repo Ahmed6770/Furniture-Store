@@ -13,7 +13,7 @@ function OrderSummary({
   const total = isCartEmpty ? 0 : subtotal + shipping;
 
   return (
-    <div className="rounded-2xl border border-stone-200 bg-white p-6 shadow-2xs sticky top-24">
+    <aside className="rounded-2xl border border-stone-200 bg-white p-6 shadow-2xs sticky top-24">
       <h2 className="text-xl font-bold text-stone-900 mb-6">Order Summary</h2>
 
       <div className="space-y-3 text-sm">
@@ -60,7 +60,8 @@ function OrderSummary({
             </button>
           ) : (
             <Link
-              className="w-full cursor-pointer rounded-xl bg-[#b53d5d] py-3.5 text-center text-sm font-bold text-white shadow-sm transition hover:bg-[#962f49] flex items-center justify-center gap-2"
+              className="w-full cursor-pointer rounded-xl bg-stone-900 py-3.5 text-center text-sm font-bold text-white
+                shadow-sm transition hover:bg-stone-800 flex items-center justify-center gap-2"
               to="/checkout"
             >
               <Lock size={16} />
@@ -98,7 +99,7 @@ function OrderSummary({
           </div>
         </div>
       )}
-    </div>
+    </aside>
   );
 }
 

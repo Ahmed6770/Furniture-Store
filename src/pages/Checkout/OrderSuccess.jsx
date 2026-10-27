@@ -30,7 +30,7 @@ function OrderSuccess() {
 
         <p className="mt-6 text-sm font-bold text-stone-900">
           Order Number:{" "}
-          <span className="font-extrabold text-[#b53d5d]">{orderNumber}</span>
+          <span className="font-extrabold text-amber-700">{orderNumber}</span>
         </p>
 
         {/* Continue shopping btn */}

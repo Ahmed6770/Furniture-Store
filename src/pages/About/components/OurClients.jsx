@@ -2,7 +2,7 @@ import clientsImage from "../../../assets/images/about/clients.png";
 
 function OurClients() {
   return (
-    <section className="bg-[#faf8f5] py-14 sm:py-16 border-y border-stone-200/50">
+    <section className="bg-stone-50 py-14 sm:py-16 border-y border-stone-200/50">
       <div className="mx-auto max-w-6xl px-6 text-center">
         <h2 className="mt-3 text-2xl sm:text-3xl font-extrabold text-stone-900">
           Companies we’re proud to work with.

@@ -33,7 +33,7 @@ function CartItem({ item, removeFromCart, addToCart }) {
           )}
           <p className="text-xs text-stone-500 mt-1">
             Category:{" "}
-            <span className="font-semibold text-[#B88746]">
+            <span className="font-semibold text-amber-700">
               {item.category || "Furniture"}
             </span>
           </p>

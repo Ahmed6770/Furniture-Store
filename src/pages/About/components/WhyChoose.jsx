@@ -43,8 +43,8 @@ function WhyChoose() {
               className="group text-center transition-all duration-300"
               key={title}
             >
-              <div className="mx-auto mb-6 flex h-14 w-14 items-center justify-center rounded-full border border-line bg-surface shadow-sm">
-                <Icon className="text-brand" size={22} strokeWidth={1.8} />
+              <div className="mx-auto mb-6 flex h-14 w-14 items-center justify-center rounded-full border border-stone-200 bg-white shadow-sm">
+                <Icon className="text-amber-700" size={22} strokeWidth={1.8} />
               </div>
               <h3 className="mb-3 text-lg font-semibold text-stone-900">
                 {title}

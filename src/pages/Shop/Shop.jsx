@@ -80,7 +80,7 @@ function Shop() {
         <div className="flex-1">
           {loading ? (
             <div className="py-20 text-center">
-              <div className="mx-auto h-12 w-12 animate-spin rounded-full border-4 border-stone-200 border-t-[#B88746]"></div>
+              <div className="mx-auto h-12 w-12 animate-spin rounded-full border-4 border-stone-200 border-t-amber-700"></div>
               <p className="mt-4 text-base font-semibold text-stone-700">
                 Loading catalog...
               </p>

@@ -15,14 +15,14 @@ function PaymentAndOrder() {
       </div>
 
       {/* Payment */}
-      <label className="flex cursor-pointer items-center gap-3 rounded-xl border-2 border-[#B88746] bg-[#B88746]/5 p-4">
-        <input className="accent-[#B88746] h-4 w-4 shrink-0"
+      <label className="flex cursor-pointer items-center gap-3 rounded-xl border-2 border-amber-700 bg-amber-50/50 p-4">
+        <input className="accent-amber-700 h-4 w-4 shrink-0"
           type="radio"
           name="payment"
           defaultChecked
         />
         <div className="flex items-center gap-3">
-          <Banknote size={20} className="text-[#B88746] shrink-0" />
+          <Banknote size={20} className="text-amber-700 shrink-0" />
           <div>
             <p className="text-sm font-semibold text-stone-900">Cash on Delivery</p>
             <p className="text-xs text-stone-400">Pay when you receive your order</p>

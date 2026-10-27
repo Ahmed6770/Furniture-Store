@@ -15,8 +15,8 @@ function ProductsSlider({ title, description, products }) {
             <p className="mt-2 text-stone-500">{description}</p>
           </div>
 
-          <Link
-            className="shrink-0 text-sm font-medium text-stone-600 transition hover:text-[#B88746]"
+          <Link className="shrink-0 text-sm font-medium text-stone-600 transition hover:text-amber-700"
+            aria-label="View all products"
             to="/shop"
           >
             View All →

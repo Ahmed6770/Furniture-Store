@@ -26,10 +26,10 @@ function ProductInfo({ product }) {
   }
 
   return (
-    <div className="flex flex-col">
+    <section className="flex flex-col">
       {/* Badge */}
       {product.badge && (
-        <span className="cursor-pointer mb-4 w-fit rounded-full bg-[#B88746]/10 px-4 py-2 text-sm font-semibold text-[#B88746]">
+        <span className="cursor-pointer mb-4 w-fit rounded-full bg-amber-50 px-4 py-2 text-sm font-semibold text-amber-800">
           {product.badge}
         </span>
       )}
@@ -40,7 +40,7 @@ function ProductInfo({ product }) {
       </p>
 
       {/* Name */}
-      <h1 className="mt-3 text-3xl font-bold text-stone-900 sm:text-4xl lg:text-5xl">
+      <h1 className="mt-3 text-3xl font-bold text-stone-900 lg:text-4xl">
         {product.name}
       </h1>
 
@@ -58,26 +58,31 @@ function ProductInfo({ product }) {
       </div>
 
       {/* Price */}
-      <h2 className="mt-8 text-4xl font-bold text-stone-900 sm:text-5xl">
+      <p className="mt-8 text-4xl font-bold text-stone-900">
         ${product.price}
-      </h2>
+      </p>
 
       {/* Description */}
-      <p className="mt-6 text-sm leading-7 text-stone-600 sm:text-base sm:leading-8">
+      <p className="mt-6 text-base leading-relaxed text-stone-600">
         {product.description}
       </p>
 
       {/* Quantity*/}
       <div className="mt-10 flex items-center gap-3 sm:gap-4">
         <div className="flex items-center shrink-0 overflow-hidden rounded-xl border border-stone-300 bg-white">
-          <button className="cursor-pointer px-2.5 py-3.5 sm:p-4 transition hover:bg-stone-100 text-stone-700"
+          <button
+            className="cursor-pointer h-12 w-11 flex items-center justify-center transition hover:bg-stone-100 text-stone-700 active:bg-stone-200"
+            type="button"
+            aria-label="Decrease quantity"
             onClick={decreaseQuantity}
           >
             <Minus size={18} />
           </button>
-          <span className="w-9 sm:w-12 text-center font-semibold text-stone-900 text-sm sm:text-base">{quantity}</span>
+          <span className="w-10 text-center font-semibold text-stone-900 text-base">{quantity}</span>
           <button
-            className="cursor-pointer px-2.5 py-3.5 sm:p-4 transition hover:bg-stone-100 text-stone-700"
+            className="cursor-pointer h-12 w-11 flex items-center justify-center transition hover:bg-stone-100 text-stone-700 active:bg-stone-200"
+            type="button"
+            aria-label="Increase quantity"
             onClick={increaseQuantity}
           >
             <Plus size={18} />
@@ -85,28 +90,30 @@ function ProductInfo({ product }) {
         </div>
 
         <button
-          className={`cursor-pointer flex flex-1 items-center justify-center gap-2 sm:gap-3 rounded-xl px-4 sm:px-6 py-3.5 sm:py-4 
-            text-sm sm:text-base font-semibold text-white transition-all duration-300 ${
+          type="button"
+          aria-label={isAdded ? `${product.name} added to cart` : `Add ${product.name} to cart`}
+          className={`cursor-pointer flex flex-1 items-center justify-center gap-2.5 rounded-xl h-12 px-6 
+            text-base font-semibold text-white transition-all duration-300 active:scale-95 ${
             isAdded
-              ? "bg-emerald-700 scale-98"
-              : "bg-[#B88746] hover:bg-[#a67637]"
+              ? "bg-emerald-700"
+              : "bg-amber-700 hover:bg-amber-800"
           }`}
           onClick={handleAddToCart}
         >
           {isAdded ? (
             <>
-              <Check size={18} className="sm:w-5 sm:h-5" />
+              <Check size={20} />
               <span>Added to Cart!</span>
             </>
           ) : (
             <>
-              <ShoppingCart size={18} className="sm:w-5 sm:h-5" />
+              <ShoppingCart size={20} />
               <span>Add To Cart</span>
             </>
           )}
         </button>
       </div>
-    </div>
+    </section>
   );
 }
 

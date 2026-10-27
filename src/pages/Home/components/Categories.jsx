@@ -3,14 +3,14 @@ import Card from "./CategoryCard.jsx";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 
-import livingRoom from "../../../assets/images/categories/livingroom.png";
-import bedRoom from "../../../assets/images/categories/bedroom.png";
-import office from "../../../assets/images/categories/office.png";
-import dining from "../../../assets/images/categories/dining.png";
-import outdoor from "../../../assets/images/categories/outdoor.png";
-import decor from "../../../assets/images/categories/decor.png";
-import storage from "../../../assets/images/categories/storage.png";
-import lighting from "../../../assets/images/categories/lighting.png";
+import livingRoom from "../../../assets/images/categories/livingroom.webp";
+import bedRoom from "../../../assets/images/categories/bedroom.webp";
+import office from "../../../assets/images/categories/office.webp";
+import dining from "../../../assets/images/categories/dining.webp";
+import outdoor from "../../../assets/images/categories/outdoor.webp";
+import decor from "../../../assets/images/categories/decor.webp";
+import storage from "../../../assets/images/categories/storage.webp";
+import lighting from "../../../assets/images/categories/lighting.webp";
 
 function Categories() {
   return (
@@ -22,8 +22,8 @@ function Categories() {
             Shop by Category
           </h2>
 
-          <Link
-            className="shrink-0 text-sm font-medium text-stone-600 transition hover:text-[#B88746]"
+          <Link className="shrink-0 text-sm font-medium text-stone-600 transition hover:text-amber-700"
+            aria-label="View all categories"
             to="/categories"
           >
             View All →

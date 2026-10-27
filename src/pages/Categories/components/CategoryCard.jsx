@@ -6,7 +6,7 @@ function CategoryCard({ category }) {
     <Link
       to="/shop"
       state={{ category: category.filterKey }}
-      className="animate-fade-up group relative overflow-hidden rounded-3xl border border-stone-200/80 bg-white shadow-2xs transition-all duration-300 hover:shadow-md"
+      className="group relative overflow-hidden rounded-3xl border border-stone-200/80 bg-white shadow-2xs transition-all duration-300 hover:shadow-md"
     >
       {/* Image Container */}
       <div className="relative h-60 w-full overflow-hidden bg-stone-100">
@@ -21,10 +21,10 @@ function CategoryCard({ category }) {
       {/* Content */}
       <div className="p-6">
         <div className="flex items-center justify-between">
-          <h2 className="text-lg font-bold text-stone-900 transition group-hover:text-[#b88746]">
+          <h2 className="text-lg font-bold text-stone-900 transition group-hover:text-amber-700">
             {category.name}
           </h2>
-          <div className="flex h-8 w-8 items-center justify-center rounded-full bg-stone-100 text-stone-700 transition group-hover:bg-[#b88746] group-hover:text-white">
+          <div className="flex h-8 w-8 items-center justify-center rounded-full bg-stone-100 text-stone-700 transition group-hover:bg-amber-700 group-hover:text-white">
             <ArrowRight size={16} />
           </div>
         </div>

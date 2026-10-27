@@ -36,7 +36,7 @@ function ProductFeatures() {
           return (
             <div className="rounded-3xl border border-stone-200 p-6 sm:p-8 "
               key={feature.title}>
-              <div className="mb-5 flex h-12 w-12 sm:h-14 sm:w-14 items-center justify-center rounded-2xl bg-[#B88746]/10 text-[#B88746]">
+              <div className="mb-5 flex h-12 w-12 sm:h-14 sm:w-14 items-center justify-center rounded-2xl bg-amber-50 text-amber-800">
                 <Icon size={28} />
               </div>
 

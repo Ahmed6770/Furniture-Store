@@ -23,7 +23,7 @@ function ProductGallery({ product }) {
             onClick={() => setSelectedImage(image)}
             className={`cursor-pointer overflow-hidden rounded-2xl border-2 transition-all duration-300 ${
               selectedImage === image
-                ? "border-[#B88746]"
+                ? "border-amber-700"
                 : "border-transparent hover:border-stone-300"
             }`}
           >

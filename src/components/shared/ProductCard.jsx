@@ -15,7 +15,7 @@ function ProductCard({ product }) {
   }
 
   return (
-    <article className="animate-fade-up relative group w-56 shrink-0 flex flex-col h-full overflow-hidden rounded-xl border border-stone-100 bg-white transition-all duration-300 hover:shadow-md">
+    <article className="relative group w-56 shrink-0 flex flex-col h-full overflow-hidden rounded-xl border border-stone-100 bg-white transition-all duration-300 hover:shadow-md">
       <Link className="relative block overflow-hidden bg-stone-50/60 p-3"
         to={`/product/${product.id}`}     
       >

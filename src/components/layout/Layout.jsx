@@ -5,7 +5,7 @@ import ScrollToTop from "../shared/ScrollToTop.jsx";
 
 function Layout() {
   return (
-    <div className="min-h-screen bg-canvas text-stone-900">
+    <div className="min-h-screen bg-stone-50 text-stone-900">
       <Navbar />
       <ScrollToTop />
       <Outlet />
