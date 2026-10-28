@@ -39,7 +39,7 @@ function WhyChoose() {
 
         <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
           {reasons.map(({ icon: Icon, title, desc }) => (
-            <article
+            <div
               className="group text-center transition-all duration-300"
               key={title}
             >
@@ -50,7 +50,7 @@ function WhyChoose() {
                 {title}
               </h3>
               <p className="text-sm leading-7 text-stone-600">{desc}</p>
-            </article>
+            </div>
           ))}
         </div>
       </div>

@@ -11,7 +11,7 @@ function OrderSuccess() {
   }
 
   return (
-    <div className="flex min-h-[75vh] items-center justify-center bg-stone-50/50 p-4 font-sans text-stone-800">
+    <section className="flex min-h-[75vh] items-center justify-center bg-stone-50/50 p-4 font-sans text-stone-800">
       <div className="w-full max-w-md rounded-2xl border border-stone-200 bg-white p-8 text-center shadow-xs">
 
         <div className="mx-auto mb-6 flex h-20 w-20 items-center justify-center rounded-full bg-emerald-600 text-white shadow-md">
@@ -43,7 +43,7 @@ function OrderSuccess() {
           </Link>
         </div>
       </div>
-    </div>
+    </section>
   );
 }
 

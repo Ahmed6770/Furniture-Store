@@ -2,7 +2,7 @@ import { CreditCard, Banknote } from "lucide-react";
 
 function PaymentAndOrder() {
   return (
-    <div className="rounded-2xl border border-stone-200 bg-white p-6 shadow-2xs">
+    <section className="rounded-2xl border border-stone-200 bg-white p-6 shadow-2xs">
       {/* Header */}
       <div className="flex items-center gap-3 mb-6">
         <div className="flex h-10 w-10 items-center justify-center rounded-full bg-stone-100">
@@ -31,12 +31,13 @@ function PaymentAndOrder() {
       </label>
 
       {/* Place Order Button */}
-      <button className="mt-6 w-full cursor-pointer rounded-xl bg-stone-900 py-4 text-center text-sm font-bold text-white shadow-sm transition hover:bg-stone-700"
+      <button className="mt-6 w-full cursor-pointer rounded-xl bg-stone-900 py-4 text-center text-sm font-bold
+        text-white shadow-sm transition hover:bg-stone-700"
         type="submit"
       >
         Place Order
       </button>
-    </div>
+    </section>
   );
 }
 

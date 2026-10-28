@@ -19,6 +19,17 @@ function ProductCard({ product }) {
       <Link className="relative block overflow-hidden bg-stone-50/60 p-3"
         to={`/product/${product.id}`}     
       >
+        {product.badge && (
+          <span className={`absolute top-2.5 left-2.5 z-10 rounded-md px-2 py-0.5 text-[10px] font-semibold tracking-wide uppercase shadow-xs ${
+            product.badge === "Best Seller"
+              ? "bg-[#B88746] text-white"
+              : product.badge === "New"
+              ? "bg-emerald-700 text-white"
+              : "bg-stone-800 text-white"
+          }`}>
+            {product.badge}
+          </span>
+        )}
         <img className="aspect-square w-full object-contain transition-transform duration-300 ease-out group-hover:scale-105"
           src={product.image} alt={product.name}
         />

@@ -10,7 +10,7 @@ function CartItemsContainer({ cartItems = [], addToCart, removeFromCart }) {
   );
 
   return (
-    <div className="space-y-6">
+    <article className="space-y-6">
       <div className="rounded-2xl border border-stone-200 bg-white p-4 sm:p-6 shadow-2xs">
 
         {/* Headers desktop */}
@@ -53,7 +53,7 @@ function CartItemsContainer({ cartItems = [], addToCart, removeFromCart }) {
           <span>Continue Shopping</span>
         </Link>
       </div>
-    </div>
+    </article>
   );
 }
 

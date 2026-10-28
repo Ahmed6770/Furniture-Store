@@ -8,8 +8,11 @@ import Reveal from "../../components/shared/Reveal.jsx";
 function Home() {
   const { products } = useProducts();
 
+  const newArrivals = products.filter((product) => product.isNewArrival);
+  const bestSellers = products.filter((product) => product.isBestSeller);
+
   return (
-    <div className="space-y-6">
+    <main className="space-y-6">
       <Reveal>
         <HeroHome />
       </Reveal>
@@ -25,19 +28,19 @@ function Home() {
       <Reveal>
         <ProductsSlider
           title="New Arrivals"
-          description="Discover our newest furniture collection."
-          products={products.slice(161, 171)}
+          description="Discover our newest furniture collection across all rooms."
+          products={newArrivals}
         />
       </Reveal>
 
       <Reveal>
         <ProductsSlider
           title="Best Sellers"
-          description="Our most loved furniture pieces."
-          products={products.slice(190, 200)}
+          description="Our most loved, top-rated furniture pieces."
+          products={bestSellers}
         />
       </Reveal>
-    </div>
+    </main>
   );
 }
 

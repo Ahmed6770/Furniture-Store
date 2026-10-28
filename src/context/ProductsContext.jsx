@@ -2,7 +2,7 @@ import { createContext, useState, useEffect } from "react";
 
 export const ProductsContext = createContext();
 
-const API_URL = "https://api.npoint.io/3d69793110177b6ccaf0";
+const API_URL = "https://api.npoint.io/bed15c951047bde8d620";
 
 function ProductsProvider({ children }) {
   const [products, setProducts] = useState([]);

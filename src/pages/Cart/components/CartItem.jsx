@@ -13,7 +13,7 @@ function CartItem({ item, removeFromCart, addToCart }) {
   };
 
   return (
-    <div className="py-6 first:pt-2 sm:first:pt-6 last:pb-2 flex flex-col sm:grid sm:grid-cols-[3fr_1fr_1.5fr_1fr]
+    <section className="py-6 first:pt-2 sm:first:pt-6 last:pb-2 flex flex-col sm:grid sm:grid-cols-[3fr_1fr_1.5fr_1fr]
      items-center gap-4 sm:gap-2 border-b border-stone-100 last:border-0">
       {/* Product Info */}
       <div className="flex items-center gap-4 w-full">
@@ -38,9 +38,10 @@ function CartItem({ item, removeFromCart, addToCart }) {
             </span>
           </p>
 
-          <button
-            className="mt-2 inline-flex items-center gap-1 text-xs font-semibold text-red-600 hover:text-red-700 transition-colors cursor-pointer"
+          <button className="mt-2 inline-flex items-center gap-1 text-xs font-semibold text-red-600
+            hover:text-red-700 transition-colors cursor-pointer"
             type="button"
+            aria-label={`Remove ${item.name} from cart`}
             onClick={() => removeFromCart(item)}
           >
             <span>Remove</span>
@@ -61,6 +62,7 @@ function CartItem({ item, removeFromCart, addToCart }) {
         <div className="flex items-center rounded-lg border border-stone-200 bg-stone-50/50">
           <button className="px-3 py-1.5 text-stone-500 hover:text-stone-900 transition cursor-pointer text-sm font-medium"
             type="button"
+            aria-label={`Decrease quantity of ${item.name}`}
             onClick={handleDecrease}
           >
             -
@@ -70,6 +72,7 @@ function CartItem({ item, removeFromCart, addToCart }) {
           </span>
           <button className="px-3 py-1.5 text-stone-500 hover:text-stone-900 transition cursor-pointer text-sm font-medium"
             type="button"
+            aria-label={`Increase quantity of ${item.name}`}
             onClick={() => addToCart(item, 1)}
           >
             +
@@ -84,7 +87,7 @@ function CartItem({ item, removeFromCart, addToCart }) {
       <div className="hidden sm:block text-right">
         <span className="text-base font-bold text-stone-900">${itemTotal}</span>
       </div>
-    </div>
+    </section>
   );
 }
 

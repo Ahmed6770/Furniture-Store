@@ -6,7 +6,7 @@ import Reveal from "../../components/shared/Reveal.jsx";
 
 function About() {
   return (
-    <div className="min-h-screen bg-white font-sans text-stone-800 space-y-12">
+    <main className="min-h-screen bg-white font-sans text-stone-800 space-y-12">
       <Reveal>
         <AboutHero />
       </Reveal>
@@ -22,7 +22,7 @@ function About() {
       <Reveal>
         <OurClients />
       </Reveal>
-    </div>
+    </main>
   );
 }
 

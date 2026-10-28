@@ -1,4 +1,4 @@
-import branchImage from "../../../assets/images/about/branch.png";
+import branchImage from "../../../assets/images/about/branch.webp";
 
 function AboutHero() {
   return (

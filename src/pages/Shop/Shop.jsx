@@ -52,7 +52,7 @@ function Shop() {
   }, [search, selectedCategory, price, sortBy]);
 
   return (
-    <div className="min-h-[60vh] space-y-6">
+    <main className="min-h-[60vh] space-y-6">
       <ShopHeader
         productsCount={filteredProducts.length}
         handleSearchChange={handleSearchChange}
@@ -66,7 +66,7 @@ function Shop() {
         selectedCategory={selectedCategory}
       />
 
-      <div className="flex flex-col gap-6 px-4 sm:px-6 lg:flex-row lg:gap-8 lg:px-8">
+      <article className="flex flex-col gap-6 px-4 sm:px-6 lg:flex-row lg:gap-8 lg:px-8">
         <aside className="hidden lg:block w-72 lg:mt-2">
           <FilterSidebar
             handleCategoryChange={handleCategoryChange}
@@ -77,7 +77,7 @@ function Shop() {
           />
         </aside>
 
-        <div className="flex-1">
+        <section className="flex-1">
           {loading ? (
             <div className="py-20 text-center">
               <div className="mx-auto h-12 w-12 animate-spin rounded-full border-4 border-stone-200 border-t-amber-700"></div>
@@ -119,9 +119,9 @@ function Shop() {
               </div>
             </>
           )}
-        </div>
-      </div>
-    </div>
+        </section>
+      </article>
+    </main>
   );
 }
 export default Shop;

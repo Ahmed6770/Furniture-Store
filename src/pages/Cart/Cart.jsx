@@ -15,7 +15,7 @@ function Cart() {
   const shipping = subtotal > 600 || cartItems.length === 0 ? 0 : 20.0
 
   return (
-    <div className="min-h-screen bg-stone-50/50 py-8 font-sans text-stone-800">
+    <main className="min-h-screen bg-stone-50/50 py-8 font-sans text-stone-800">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <CartHeader />
 
@@ -30,7 +30,7 @@ function Cart() {
           <OrderSummary subtotal={subtotal} shipping={shipping} />
         </div>
       </div>
-    </div>
+    </main>
   );
 }
 

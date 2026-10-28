@@ -1,13 +1,13 @@
 import CategoryCard from "./CategoryCard.jsx";
 
-import bedroomImg from "../../../assets/images/categories/bedroom.png";
-import decorImg from "../../../assets/images/categories/decor.png";
-import diningImg from "../../../assets/images/categories/dining.png";
-import livingRoomImg from "../../../assets/images/categories/livingroom.png";
-import officeImg from "../../../assets/images/categories/office.png";
-import outdoorImg from "../../../assets/images/categories/outdoor.png";
-import storageImg from "../../../assets/images/categories/storage.png";
-import lightingImg from "../../../assets/images/categories/lighting.png";
+import bedroomImg from "../../../assets/images/categories/bedroom.webp";
+import decorImg from "../../../assets/images/categories/decor.webp";
+import diningImg from "../../../assets/images/categories/dining.webp";
+import livingRoomImg from "../../../assets/images/categories/livingroom.webp";
+import officeImg from "../../../assets/images/categories/office.webp";
+import outdoorImg from "../../../assets/images/categories/outdoor.webp";
+import storageImg from "../../../assets/images/categories/storage.webp";
+import lightingImg from "../../../assets/images/categories/lighting.webp";
 
 function CategoriesGrid() {
   return (
@@ -60,9 +60,9 @@ const categories = [
   {
     id: "workspace",
     name: "Office & Workspace",
-    filterKey: "Tables",
+    filterKey: "Desks",
     image: officeImg,
-    description: "Ergonomic desks, chairs & storage solutions.",
+    description: "Ergonomic desks, workstations & office solutions.",
   },
   {
     id: "outdoor",

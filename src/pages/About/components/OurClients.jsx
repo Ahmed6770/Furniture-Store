@@ -1,4 +1,4 @@
-import clientsImage from "../../../assets/images/about/clients.png";
+import clientsImage from "../../../assets/images/about/clients.webp";
 
 function OurClients() {
   return (

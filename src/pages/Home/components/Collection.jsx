@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import livingRoom from "../../../assets/images/livingRoom.png";
+import livingRoom from "../../../assets/images/livingRoom.webp";
 
 function Collection() {
   return (

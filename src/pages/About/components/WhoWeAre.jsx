@@ -1,9 +1,9 @@
 function WhoWeAre() {
   return (
     <section className="mx-auto max-w-3xl px-6 pt-10 pb-4 sm:pt-12 sm:pb-4 text-center">
-      <h2 className="mt-3 text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight text-stone-900 leading-tight">
+      <h1 className="mt-3 text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight text-stone-900 leading-tight">
         Furniture for the way you live.
-      </h2>
+      </h1>
 
       <div className="mt-5 space-y-3.5 text-sm sm:text-base leading-relaxed text-stone-600">
         <p>

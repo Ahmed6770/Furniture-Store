@@ -25,7 +25,7 @@ function ProductDetails() {
     );
   }
   return (
-    <section className="mx-auto max-w-7xl px-6 py-12">
+    <main className="mx-auto max-w-7xl px-6 py-12">
       <div className="mt-10 grid gap-14 lg:grid-cols-2">
         <ProductGallery product={product} />
 
@@ -39,7 +39,7 @@ function ProductDetails() {
       <div className="mt-24">
         <RelatedProducts currentProduct={product} />
       </div>
-    </section>
+    </main>
   );
 }
 

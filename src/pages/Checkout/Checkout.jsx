@@ -33,7 +33,7 @@ function Checkout() {
   const shipping = subtotal > 600 || cartItems.length === 0 ? 0 : 20.0;
 
   return (
-    <div className="min-h-screen bg-stone-50/50 py-8 font-sans text-stone-800">
+    <main className="min-h-screen bg-stone-50/50 py-8 font-sans text-stone-800">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Page Header */}
         <div className="mb-8">
@@ -57,7 +57,7 @@ function Checkout() {
           </div>
         </div>
       </div>
-    </div>
+    </main>
   );
 }
 

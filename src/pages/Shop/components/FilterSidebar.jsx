@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { SlidersHorizontal, X, Check } from "lucide-react";
 
-const categories = ["Sofas", "Chairs", "Tables", "Beds", "Storage", "Lighting"];
+const categories = ["Sofas", "Chairs", "Tables", "Desks", "Beds", "Storage", "Lighting"];
 
 function FilterSidebar({
   handleCategoryChange,
@@ -17,7 +17,7 @@ function FilterSidebar({
     (selectedCategory?.length || 0) + (price < 3000 ? 1 : 0);
 
   const filterContent = (
-    <div className="space-y-8">
+    <section className="space-y-8">
       {/* Categories */}
       <div>
         <h3 className="mb-4 font-semibold text-stone-800">Categories</h3>
@@ -56,13 +56,13 @@ function FilterSidebar({
           <h3 className="font-semibold text-stone-800">Price Range</h3>
           <span className="text-sm font-bold text-amber-800">${price}</span>
         </div>
-        <input
-          className="w-full cursor-pointer accent-amber-700"
+        <input className="w-full cursor-pointer accent-amber-700"
           type="range"
           value={price}
           onChange={handlePriceChange}
           min="0"
           max="3000"
+          aria-label="Price range filter"
         />
         <div className="mt-2 flex justify-between text-xs text-stone-500">
           <span>$0</span>
@@ -72,6 +72,7 @@ function FilterSidebar({
 
       {/* Clear Filters */}
       <button
+        type="button"
         className="w-full cursor-pointer rounded-xl border border-stone-300 py-3 text-sm font-medium transition hover:bg-stone-100"
         onClick={() => {
           ResetAll();
@@ -79,7 +80,7 @@ function FilterSidebar({
       >
         Clear Filters
       </button>
-    </div>
+    </section>
   );
 
   return (
@@ -88,6 +89,7 @@ function FilterSidebar({
       <div className="lg:hidden w-full">
         <button
           type="button"
+          aria-label="Open filters"
           onClick={() => setIsOpenMobile(true)}
           className="flex w-full cursor-pointer items-center justify-center gap-2 rounded-lg border border-gray-300 bg-white px-3 sm:px-4 py-2.5 text-sm font-semibold text-stone-800 transition hover:border-amber-700"
         >
@@ -118,6 +120,7 @@ function FilterSidebar({
               </div>
               <button className="rounded-full p-2 text-stone-500 transition hover:bg-stone-100 hover:text-stone-900"
                 type="button"
+                aria-label="Close filters"
                 onClick={() => setIsOpenMobile(false)}
               >
                 <X size={20} />

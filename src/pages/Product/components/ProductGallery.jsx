@@ -14,12 +14,13 @@ function ProductGallery({ product }) {
   }, [product]);
 
   return (
-    <div className="flex flex-col-reverse gap-5 md:flex-row">
+    <section className="flex flex-col-reverse gap-5 md:flex-row">
 
       {/* Thumbnails */}
       <div className="flex gap-4 md:flex-col">
         {galleryImages.slice(0, 4).map((image, index) => (
           <button key={index}
+            type="button"
             onClick={() => setSelectedImage(image)}
             className={`cursor-pointer overflow-hidden rounded-2xl border-2 transition-all duration-300 ${
               selectedImage === image
@@ -43,7 +44,7 @@ function ProductGallery({ product }) {
           alt={product.name}
         />
       </div>
-    </div>
+    </section>
   );
 }
 

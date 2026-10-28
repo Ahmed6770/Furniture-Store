@@ -35,12 +35,15 @@ function ShopHeader({
               type="text" placeholder="Search furniture..."
               value={search}
               onChange={handleSearchChange}
+              aria-label="Search furniture"
             />
           </div>
 
           {/* Sort & Mobile Filter */}
           <div className="flex items-center gap-3 w-full sm:w-auto">
-            <select className="flex-1 sm:flex-none rounded-lg border border-gray-300 px-4 py-2.5 text-sm outline-none transition focus:border-amber-700 bg-white cursor-pointer"
+            <select className="flex-1 sm:flex-none rounded-lg border border-gray-300 px-4 py-2.5 text-sm
+              outline-none transition focus:border-amber-700 bg-white cursor-pointer"
+              aria-label="Sort by"
               value={sortBy} onChange={handleSortChange}>
               <option value="featured">Featured</option>
               <option value="priceLow">Price: Low to High</option>

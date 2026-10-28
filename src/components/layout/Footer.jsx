@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Check } from "lucide-react";
-import logo from "../../assets/images/logo.png";
+import logo from "../../assets/images/logo.webp";
 
 function Footer() {
   const [email, setEmail] = useState("");
@@ -92,6 +92,7 @@ function Footer() {
                 <input className="h-11 w-full rounded-full border border-stone-300 bg-white px-4 text-sm text-stone-900 outline-none placeholder:text-stone-400 focus:border-amber-700 focus:ring-2 focus:ring-amber-700/30"
                   placeholder="Your email" type="email" id="newsletter-email" required
                   value={email} onChange={(e) => setEmail(e.target.value)}
+                  aria-label="Enter your email to subscribe to the newsletter"
                 />
                 <button className="cursor-pointer mt-2 h-11 w-full rounded-full bg-stone-900 px-4 text-sm font-semibold text-white transition-colors hover:bg-amber-700"
                   type="submit"

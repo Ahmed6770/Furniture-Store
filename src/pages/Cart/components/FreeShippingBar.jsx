@@ -18,7 +18,13 @@ function FreeShippingBar({ targetAmount = 600, currentAmount = 196 }) {
         <span className="text-stone-500 font-bold">${targetAmount}</span>
       </div>
 
-      <div className="h-2 w-full overflow-hidden rounded-full bg-stone-200">
+      <div className="h-2 w-full overflow-hidden rounded-full bg-stone-200"
+        role="progressbar"
+        aria-valuenow={currentAmount}
+        aria-valuemin={0}
+        aria-valuemax={targetAmount}
+        aria-label="Free shipping progress"
+      >
         <div
           className="h-full rounded-full bg-amber-700 transition-all duration-500"
           style={{ width: `${percentage}%` }}

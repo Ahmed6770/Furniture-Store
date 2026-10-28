@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
-import { Sparkles } from "lucide-react";
 import Features from "./Features";
-import heroImage from "../../../assets/images/hero.png";
+import heroImage from "../../../assets/images/hero.webp";
 
 function HeroHome() {
   return (

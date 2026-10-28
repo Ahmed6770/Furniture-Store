@@ -1,5 +1,5 @@
 import { ArrowUpRight } from "lucide-react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 function CategoryCard({ category }) {
   const navigate = useNavigate();
@@ -11,8 +11,10 @@ function CategoryCard({ category }) {
   };
 
   return (
-    <div className="group cursor-pointer block"
-      onClick={handleClick}
+    <Link className="group cursor-pointer block"
+    to="/shop"
+    aria-label="View products in this category"
+    onClick={handleClick}
     >
       <div className="overflow-hidden rounded-2xl bg-stone-100 border border-stone-200/80 shadow-xs transition-all duration-300 group-hover:shadow-md">
         <img className="aspect-[4/3] w-full object-cover transition-opacity duration-300 group-hover:opacity-95"
@@ -29,7 +31,7 @@ function CategoryCard({ category }) {
           size={18}
         />
       </div>
-    </div>
+    </Link>
   );
 }
 

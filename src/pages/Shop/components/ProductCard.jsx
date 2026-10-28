@@ -16,9 +16,20 @@ function ProductCard({ product }) {
   }
 
   return (
-    <article className="group flex flex-col h-full overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm transition-all duration-300 hover:shadow-lg">
-      <Link className="cursor-pointer" to={`/product/${id}`}>
-        <div className="overflow-hidden bg-stone-50/60 p-4">
+    <section className="group flex flex-col h-full overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm transition-all duration-300 hover:shadow-lg">
+      <Link className="cursor-pointer relative block" to={`/product/${id}`}>
+        <div className="overflow-hidden bg-stone-50/60 p-4 relative">
+          {product.badge && (
+            <span className={`absolute top-3 left-3 z-10 rounded-md px-2.5 py-1 text-xs font-semibold tracking-wide uppercase shadow-xs ${
+              product.badge === "Best Seller"
+                ? "bg-amber-700 text-white"
+                : product.badge === "New"
+                ? "bg-emerald-700 text-white"
+                : "bg-stone-800 text-white"
+            }`}>
+              {product.badge}
+            </span>
+          )}
           <img className="h-56 w-full object-contain transition-transform duration-300 group-hover:scale-105 ease-out"
           src={image} alt={name} />
         </div>
@@ -39,9 +50,12 @@ function ProductCard({ product }) {
           <p className="text-lg sm:text-xl font-bold text-amber-700 shrink-0">${price}</p>
 
           <button
+            type="button"
+            aria-label={isAdded ? `${name} added to cart` : `Add ${name} to cart`}
             onClick={handleAddToCart}
-            className={`cursor-pointer flex items-center gap-1.5 rounded-xl px-2.5 sm:px-3 py-1.5 sm:py-2 text-xs sm:text-sm font-semibold text-white whitespace-nowrap shrink-0 transition-all duration-300 ${
-              isAdded
+            className={`cursor-pointer flex items-center gap-1.5 rounded-xl px-2.5 sm:px-3 py-1.5 sm:py-2 text-xs sm:text-sm font-semibold
+                text-white whitespace-nowrap shrink-0 transition-all duration-300
+                ${isAdded
                 ? "bg-emerald-600 scale-95"
                 : "bg-[#B88746] hover:bg-[#a67637] hover:scale-105"
             }`}
@@ -60,7 +74,7 @@ function ProductCard({ product }) {
           </button>
         </div>
       </div>
-    </article>
+    </section>
   );
 }
 
