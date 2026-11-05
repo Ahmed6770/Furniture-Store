@@ -1,10 +1,11 @@
-import useProducts from "../../../hooks/useProducts.js";
+import { useContext } from "react";
+import { ProductsContext } from "../../../context/ProductsContext.jsx";
 import ProductCard from "../../Shop/components/ProductCard";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 
 function RelatedProducts({ currentProduct }) {
-  const { products } = useProducts();
+  const { products } = useContext(ProductsContext);
   // Filter related products
   const relatedProducts = products.filter((product) =>
         product.category === currentProduct.category &&

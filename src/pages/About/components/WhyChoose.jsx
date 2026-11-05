@@ -26,7 +26,7 @@ const reasons = [
 function WhyChoose() {
   return (
     <section className="pt-4 pb-12 lg:pt-6 lg:pb-16">
-      <div className="mx-auto w-full max-w-[1500px] px-6 lg:px-8">
+      <div className="mx-auto w-full max-w-screen-2xl px-6 lg:px-8">
         <div className="mb-16 text-center">
           <h2 className="text-3xl font-bold leading-tight text-stone-900 lg:text-4xl">
             Crafted for Beautiful Living

@@ -1,11 +1,9 @@
 import CategoryCard from "./CategoryCard.jsx";
 
 import bedroomImg from "../../../assets/images/categories/bedroom.webp";
-import decorImg from "../../../assets/images/categories/decor.webp";
 import diningImg from "../../../assets/images/categories/dining.webp";
 import livingRoomImg from "../../../assets/images/categories/livingroom.webp";
 import officeImg from "../../../assets/images/categories/office.webp";
-import outdoorImg from "../../../assets/images/categories/outdoor.webp";
 import storageImg from "../../../assets/images/categories/storage.webp";
 import lightingImg from "../../../assets/images/categories/lighting.webp";
 
@@ -63,19 +61,5 @@ const categories = [
     filterKey: "Desks",
     image: officeImg,
     description: "Ergonomic desks, workstations & office solutions.",
-  },
-  {
-    id: "outdoor",
-    name: "Outdoor & Patio",
-    filterKey: "Outdoor",
-    image: outdoorImg,
-    description: "Weather-resistant furniture for garden & balcony.",
-  },
-  {
-    id: "decor",
-    name: "Decor & Accessories",
-    filterKey: "Decor",
-    image: decorImg,
-    description: "Rugs, mirrors, vases & subtle details.",
   },
 ];

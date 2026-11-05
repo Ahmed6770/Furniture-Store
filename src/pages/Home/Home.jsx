@@ -1,21 +1,21 @@
+import { useContext } from "react";
+import { ProductsContext } from "../../context/ProductsContext.jsx";
 import HeroHome from "./components/HeroHome.jsx";
 import Categories from "./components/Categories.jsx";
 import Collection from "./components/Collection.jsx";
 import ProductsSlider from "./components/ProductsSlider.jsx";
-import useProducts from "../../hooks/useProducts.js";
 import Reveal from "../../components/shared/Reveal.jsx";
 
 function Home() {
-  const { products } = useProducts();
+  const { products } = useContext(ProductsContext);
 
   const newArrivals = products.filter((product) => product.isNewArrival);
   const bestSellers = products.filter((product) => product.isBestSeller);
 
   return (
     <main className="space-y-6">
-      <Reveal>
         <HeroHome />
-      </Reveal>
+
 
       <Reveal>
         <Categories />

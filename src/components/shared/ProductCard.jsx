@@ -19,17 +19,6 @@ function ProductCard({ product }) {
       <Link className="relative block overflow-hidden bg-stone-50/60 p-3"
         to={`/product/${product.id}`}     
       >
-        {product.badge && (
-          <span className={`absolute top-2.5 left-2.5 z-10 rounded-md px-2 py-0.5 text-[10px] font-semibold tracking-wide uppercase shadow-xs ${
-            product.badge === "Best Seller"
-              ? "bg-[#B88746] text-white"
-              : product.badge === "New"
-              ? "bg-emerald-700 text-white"
-              : "bg-stone-800 text-white"
-          }`}>
-            {product.badge}
-          </span>
-        )}
         <img className="aspect-square w-full object-contain transition-transform duration-300 ease-out group-hover:scale-105"
           src={product.image} alt={product.name}
         />
@@ -38,13 +27,13 @@ function ProductCard({ product }) {
       <div className="flex flex-1 flex-col justify-between p-3.5">
         <div>
           <Link to={`/product/${product.id}`}>
-            <h3 className="line-clamp-2 min-h-[2.5rem] text-sm font-semibold text-stone-900 leading-snug transition-colors duration-300 group-hover:text-[#B88746]">
+            <h3 className="line-clamp-2 min-h-10 text-sm font-semibold text-stone-900 leading-snug transition-colors duration-300 group-hover:text-amber-700">
               {product.name}
             </h3>
           </Link>
 
-          <div className="mt-1.5 flex items-center gap-1 text-[11px] text-stone-500">
-            <Star className="fill-yellow-400 text-yellow-400" size={13} />
+          <div className="mt-1.5 flex items-center gap-1 text-xs text-stone-500">
+            <Star className="fill-amber-400 text-amber-400" size={13} />
             <span>{product.rating}</span>
             <span>({product.reviews})</span>
           </div>
@@ -56,11 +45,13 @@ function ProductCard({ product }) {
           </p>
 
           <button
+            type="button"
+            aria-label={isAdded ? `${product.name} added to cart` : `Add ${product.name} to cart`}
             onClick={handleAddToCart}
             className={`cursor-pointer flex items-center gap-1.5 rounded-lg px-2 sm:px-2.5 py-1.5 text-xs font-semibold text-white whitespace-nowrap shrink-0 transition-all duration-300 ${
               isAdded
                 ? "bg-emerald-600 scale-95"
-                : "bg-[#B88746] hover:bg-[#a67637] hover:scale-105"
+                : "bg-amber-700 hover:bg-amber-800 hover:scale-105"
             }`}
           >
             {isAdded ? (

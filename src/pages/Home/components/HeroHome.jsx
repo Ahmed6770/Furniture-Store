@@ -13,7 +13,7 @@ function HeroHome() {
             <div className="flex flex-col items-center space-y-4 lg:items-start lg:space-y-5">
 
               {/* Title */}
-              <h1 className="max-w-xl text-3xl font-bold leading-[1.1] text-stone-900 sm:text-4xl lg:text-5xl">
+              <h1 className="max-w-xl text-3xl font-bold leading-tight text-stone-900 sm:text-4xl lg:text-5xl">
                 Furniture That
                 <br className="hidden lg:inline" />{" "}
                 <span className="text-amber-700">Fits Your Life.</span>
@@ -58,7 +58,7 @@ function HeroHome() {
           {/* Right Side on Desktop */}
           <div className="hidden w-full lg:col-span-7 lg:block">
             <div className="overflow-hidden rounded-3xl border border-stone-100 shadow-sm">
-              <img className="h-[480px] w-full object-cover"
+              <img className="h-120 w-full object-cover"
                 src={heroImage}
                 alt="Modern Living Room"
               />

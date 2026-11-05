@@ -6,7 +6,7 @@ function Features() {
     <section className="border-y border-stone-200 py-1">
       <div className="grid grid-cols-2 lg:grid-cols-4">
         
-        {features.map(({ icon: Icon, title, desc }) => (
+        {features.map(({ Icon, title, desc }) => (
           <div className="flex items-center gap-2.5 py-4 pr-3 sm:gap-3 sm:py-5 lg:border-r lg:border-stone-200 lg:px-6 lg:first:pl-0 lg:last:border-r-0" key={title}>
             <Icon className="shrink-0 text-amber-700"
             strokeWidth={1.7} size={20} />
@@ -29,22 +29,22 @@ export default Features;
 
 const features = [
   {
-    icon: Truck,
+    Icon: Truck,
     title: "Free Shipping",
     desc: "On all orders over $600",
   },
   {
-    icon: RotateCcw,
+    Icon: RotateCcw,
     title: "30 Days Returns",
     desc: "Easy returns & exchanges",
   },
   {
-    icon: ShieldCheck,
+    Icon: ShieldCheck,
     title: "2 Years Warranty",
     desc: "Quality you can trust",
   },
   {
-    icon: CreditCard,
+    Icon: CreditCard,
     title: "Secure Payments",
     desc: "100% safe & secure",
   },

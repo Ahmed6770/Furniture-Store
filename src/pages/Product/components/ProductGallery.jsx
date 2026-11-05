@@ -2,9 +2,9 @@ import { useState, useEffect } from "react";
 
 function ProductGallery({ product }) {
 
-  const galleryImages = product.images?.length > 0 
-  ? product.images 
-  : [product.image].filter(Boolean);
+  const galleryImages = product.images?.length
+    ? product.images
+    : [product.image];
 
   const [selectedImage, setSelectedImage] = useState(product?.image);
   useEffect(() => {
@@ -38,7 +38,7 @@ function ProductGallery({ product }) {
 
       {/* Main Image */}
       <div className="flex-1 overflow-hidden rounded-3xl bg-stone-100">
-        <img className="h-[280px] w-full object-contain p-4 sm:h-[380px] sm:p-6 lg:h-[600px] lg:p-8 transition-all duration-300"
+        <img className="h-72 w-full object-contain p-4 sm:h-96 sm:p-6 lg:h-144 lg:p-8 transition-all duration-300"
           id="main-product-image"
           src={selectedImage}
           alt={product.name}

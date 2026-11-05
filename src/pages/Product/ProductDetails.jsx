@@ -1,21 +1,22 @@
-import { useEffect } from "react";
+import { useEffect, useContext } from "react";
 import { useParams } from "react-router-dom";
-import useProducts from "../../hooks/useProducts.js";
+import { ProductsContext } from "../../context/ProductsContext.jsx";
 import ProductGallery from "./components/ProductGallery";
 import ProductInfo from "./components/ProductInfo";
 import ProductFeatures from "./components/ProductFeatures";
 import RelatedProducts from "./components/RelatedProducts";
 
 function ProductDetails() {
-  // scroll
   const { id } = useParams();
-  const { products } = useProducts();
+  const { products, loading } = useContext(ProductsContext);
   const product = products.find((product) => product.id === id);
+  
+  // Scroll
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   }, [id]);
 
-  if (!product) {
+  if (loading) {
     return (
       <main className="mx-auto max-w-7xl px-6 py-20">
         <h2 className="text-center text-2xl font-semibold">

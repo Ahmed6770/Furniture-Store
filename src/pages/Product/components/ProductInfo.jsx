@@ -27,13 +27,6 @@ function ProductInfo({ product }) {
 
   return (
     <section className="flex flex-col">
-      {/* Badge */}
-      {product.badge && (
-        <span className="cursor-pointer mb-4 w-fit rounded-full bg-amber-50 px-4 py-2 text-sm font-semibold text-amber-800">
-          {product.badge}
-        </span>
-      )}
-
       {/* Category */}
       <p className="text-sm uppercase tracking-widest text-stone-500">
         {product.category}
