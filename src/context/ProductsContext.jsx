@@ -1,8 +1,7 @@
 import { createContext, useState, useEffect } from "react";
+import { getProducts } from "../services/getProducts";
 
 export const ProductsContext = createContext();
-
-const API_URL = "https://api.npoint.io/bed15c951047bde8d620";
 
 function ProductsProvider({ children }) {
   const [products, setProducts] = useState([]);
@@ -13,11 +12,7 @@ function ProductsProvider({ children }) {
   useEffect(() => {
     async function loadProducts() {
       try {
-        const response = await fetch(API_URL);
-        if (!response.ok) {
-          throw new Error("Failed to load products");
-        }
-        const data = await response.json();
+        const data = await getProducts();
         setProducts(data);
       } catch (err) {
         setError(err);
