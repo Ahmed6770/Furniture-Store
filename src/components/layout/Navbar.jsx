@@ -1,48 +1,13 @@
 import { useState, useContext } from "react";
-import { ShoppingCart, Search, Menu, X } from "lucide-react";
-import { NavLink, useNavigate } from "react-router-dom";
+import { ShoppingCart, Menu, X } from "lucide-react";
+import { NavLink } from "react-router-dom";
 import logo from "../../assets/images/logo.webp";
 import { CartContext } from "../../context/CartContext.jsx";
-
-// search function
-function SearchInput({ isMobile, search, setSearch, handleSearchSubmit }) {
-  return (
-    <form className={`relative ${isMobile ? "w-full mb-4" : "hidden lg:block"}`}
-      onSubmit={handleSearchSubmit}
-    >
-      <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-stone-400"
-        size={18}
-      />
-      <input className={`rounded-full border border-stone-300 bg-white py-2 pl-11 pr-4 outline-none placeholder:text-sm
-      placeholder:text-stone-400 transition-all duration-300 focus:border-amber-700 focus:ring-2 focus:ring-amber-700/30
-        text-stone-900 ${isMobile ? "w-full h-11" : "w-72"}`}
-        type="search" placeholder="Search for furniture..."
-        value={search}
-        aria-label="Search furniture"
-        onChange={(event) => setSearch(event.target.value)}
-      />
-    </form>
-  );
-}
+import SearchBar from "../shared/SearchBar.jsx";
 
 function Navbar() {
-  const navigate = useNavigate();
-  const [search, setSearch] = useState("");
-  const { cartItems } = useContext(CartContext);
+  const { totalCartCount } = useContext(CartContext);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  // Cart count
-  const totalCartCount = cartItems.reduce(
-    (acc, item) => acc + item.quantity,
-    0,
-  );
-  // Search function
-  const handleSearchSubmit = (event) => {
-    event.preventDefault();
-    if (search.trim()) {
-      navigate("/shop", { state: { search: search.trim() } });
-      setIsMobileMenuOpen(false);
-    }
-  };
 
   const navLinks = [
     { name: "Home", path: "/" },
@@ -53,7 +18,7 @@ function Navbar() {
 
   return (
     <nav className="relative border-b border-stone-200 bg-stone-50">
-      <div className="mx-auto flex h-20 w-full max-w-[1500px] items-center justify-between px-6 lg:px-8">
+      <div className="mx-auto flex h-20 w-full max-w-screen-2xl items-center justify-between px-6 lg:px-8">
         <NavLink to="/" className="flex items-center gap-2">
           <img className="h-12 w-12 lg:h-16 lg:w-16"
             src={logo} alt="LOOMA logo"
@@ -76,19 +41,14 @@ function Navbar() {
         </div>
           {/* Search bar */}
         <div className="flex items-center gap-3 sm:gap-4">
-          <SearchInput
-            search={search}
-            setSearch={setSearch}
-            handleSearchSubmit={handleSearchSubmit}
-            aria-label="Search furniture"
-          />
+          <SearchBar />
           {/* Cart btn */}
           <NavLink className="relative text-stone-700 transition-all duration-300 hover:-translate-y-0.5 hover:text-amber-700"
             to="/cart" aria-label="Open cart"
           >
             <ShoppingCart size={24} />
             {totalCartCount > 0 && (
-              <span className="absolute -top-1.5 -right-2 flex h-5 w-5 items-center justify-center rounded-full bg-rose-600 text-[10px] font-bold text-white shadow-xs">
+              <span className="absolute -top-1.5 -right-2 flex h-5 w-5 items-center justify-center rounded-full bg-rose-600 text-xs font-bold text-white shadow-xs">
                 {totalCartCount}
               </span>
             )}
@@ -106,12 +66,7 @@ function Navbar() {
           {/* Mobile Menu */}
       {isMobileMenuOpen && (
         <div className="absolute left-0 top-full z-50 w-full border-t border-stone-200 bg-stone-50 p-4 shadow-md lg:hidden">
-          <SearchInput
-            isMobile={true}
-            search={search}
-            setSearch={setSearch}
-            handleSearchSubmit={handleSearchSubmit}
-          />
+          <SearchBar isMobile setIsMobileMenuOpen={setIsMobileMenuOpen} />
           
           <div className="flex flex-col space-y-1">
             {navLinks.map((link) => (

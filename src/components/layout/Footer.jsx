@@ -19,7 +19,7 @@ function Footer() {
 
   return (
     <footer className="border-t border-stone-200 bg-stone-50">
-      <div className="mx-auto w-full max-w-[1500px] px-6 py-10 lg:px-8">
+      <div className="mx-auto w-full max-w-screen-2xl px-6 py-10 lg:px-8">
         <div className="grid grid-cols-2 gap-x-8 gap-y-10 lg:grid-cols-4">
           {/* Logo */}
           <div className="col-span-2 lg:col-span-1">
@@ -27,7 +27,7 @@ function Footer() {
               <img className="h-12 w-12" src={logo} alt="LOOMA logo" />
               <h2 className="text-xl font-semibold tracking-wide text-stone-800">LOOMA</h2>
             </Link>
-            <p className="mt-3 max-w-[220px] text-sm leading-5 text-stone-500">
+            <p className="mt-3 max-w-xs text-sm leading-5 text-stone-500">
               Furniture that fits your lifestyle.
             </p>
           </div>
@@ -51,7 +51,7 @@ function Footer() {
                 </Link>
               </li>
               <li>
-                <Link className={footerLinkClass} to="/shop" state={{ category: "Tables" }}>
+                <Link className={footerLinkClass} to="/shop" state={{ category: "Desks" }}>
                   Office
                 </Link>
               </li>
