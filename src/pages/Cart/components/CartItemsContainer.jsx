@@ -3,23 +3,22 @@ import { ArrowLeft } from "lucide-react";
 import CartItem from "./CartItem.jsx";
 import FreeShippingBar from "./FreeShippingBar.jsx";
 
-function CartItemsContainer({ cartItems = [], addToCart, removeFromCart }) {
-  const currentTotal = cartItems.reduce(
-    (acc, item) => acc + item.price * item.quantity,
-    0
-  );
-
+function CartItemsContainer({
+  cartItems = [],
+  addToCart,
+  removeFromCart,
+  subtotal = 0,
+}) {
   return (
     <article className="space-y-6">
       <div className="rounded-2xl border border-stone-200 bg-white p-4 sm:p-6 shadow-2xs">
 
         {/* Headers desktop */}
-        <div className="hidden sm:grid grid-cols-[2.5fr_1fr_1.2fr_1fr_auto] items-center border-b border-stone-100 pb-4 text-xs font-bold uppercase tracking-wider text-stone-400">
-          <span>Product</span>
-          <span className="text-right">Price</span>
-          <span className="text-center">Quantity</span>
-          <span className="text-right">Total</span>
-          <span className="w-8"></span>
+        <div className="hidden sm:grid grid-cols-12 items-center gap-2 border-b border-stone-100 pb-4 text-xs font-bold uppercase tracking-wider text-stone-400">
+          <span className="col-span-6">Product</span>
+          <span className="col-span-2 text-right">Price</span>
+          <span className="col-span-2 text-center">Quantity</span>
+          <span className="col-span-2 text-right">Total</span>
         </div>
 
         <div className="divide-y divide-stone-100">
@@ -41,7 +40,7 @@ function CartItemsContainer({ cartItems = [], addToCart, removeFromCart }) {
         </div>
 
         {/* Free shipping progress bar */}
-        <FreeShippingBar currentAmount={currentTotal} targetAmount={600} />
+        <FreeShippingBar currentAmount={subtotal} targetAmount={600} />
       </div>
 
       {/* Continue Shopping Button */}

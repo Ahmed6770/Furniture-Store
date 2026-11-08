@@ -1,9 +1,18 @@
+import { useContext, useEffect } from "react";
 import { Check } from "lucide-react";
 import { Link, useLocation, Navigate } from "react-router-dom";
+import { CartContext } from "../../context/CartContext.jsx";
 
 function OrderSuccess() {
   const location = useLocation();
   const orderNumber = location.state?.orderNumber;
+  const { clearCart } = useContext(CartContext);
+
+  useEffect(() => {
+    if (orderNumber) {
+      clearCart();
+    }
+  }, [orderNumber, clearCart]);
 
   // Back to shop page if no order placed
   if (!orderNumber) {
@@ -11,7 +20,7 @@ function OrderSuccess() {
   }
 
   return (
-    <section className="flex min-h-[75vh] items-center justify-center bg-stone-50/50 p-4 font-sans text-stone-800">
+    <section className="flex min-h-screen items-center justify-center bg-stone-50/50 p-4 font-sans text-stone-800">
       <div className="w-full max-w-md rounded-2xl border border-stone-200 bg-white p-8 text-center shadow-xs">
 
         <div className="mx-auto mb-6 flex h-20 w-20 items-center justify-center rounded-full bg-emerald-600 text-white shadow-md">

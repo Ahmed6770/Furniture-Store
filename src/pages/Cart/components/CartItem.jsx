@@ -13,10 +13,10 @@ function CartItem({ item, removeFromCart, addToCart }) {
   };
 
   return (
-    <section className="py-6 first:pt-2 sm:first:pt-6 last:pb-2 flex flex-col sm:grid sm:grid-cols-[3fr_1fr_1.5fr_1fr]
+    <section className="py-6 first:pt-2 sm:first:pt-6 last:pb-2 flex flex-col sm:grid sm:grid-cols-12
      items-center gap-4 sm:gap-2 border-b border-stone-100 last:border-0">
       {/* Product Info */}
-      <div className="flex items-center gap-4 w-full">
+      <div className="flex items-center gap-4 w-full sm:col-span-6">
         <div className="h-20 w-24 shrink-0 overflow-hidden rounded-xl bg-stone-100 p-2 border border-stone-200/60 flex items-center justify-center">
           <img className="h-full w-full object-contain"
             src={itemImage}
@@ -51,14 +51,14 @@ function CartItem({ item, removeFromCart, addToCart }) {
       </div>
 
       {/* Price */}
-      <div className="hidden sm:block text-right">
+      <div className="hidden sm:block sm:col-span-2 text-right">
         <span className="text-sm font-semibold text-stone-900">
           ${item.price.toFixed(2)}
         </span>
       </div>
 
       {/* Quantity */}
-      <div className="flex items-center justify-between sm:justify-center w-full sm:w-auto">
+      <div className="flex items-center justify-between sm:justify-center w-full sm:w-auto sm:col-span-2">
         <div className="flex items-center rounded-lg border border-stone-200 bg-stone-50/50">
           <button className="px-3 py-1.5 text-stone-500 hover:text-stone-900 transition cursor-pointer text-sm font-medium"
             type="button"
@@ -84,7 +84,7 @@ function CartItem({ item, removeFromCart, addToCart }) {
       </div>
 
       {/* Total */}
-      <div className="hidden sm:block text-right">
+      <div className="hidden sm:block sm:col-span-2 text-right">
         <span className="text-base font-bold text-stone-900">${itemTotal}</span>
       </div>
     </section>

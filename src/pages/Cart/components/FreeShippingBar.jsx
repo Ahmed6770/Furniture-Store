@@ -1,6 +1,6 @@
 import { Truck } from "lucide-react";
 
-function FreeShippingBar({ targetAmount = 600, currentAmount = 196 }) {
+function FreeShippingBar({ targetAmount = 600, currentAmount = 0 }) {
   const remaining = Math.max(0, targetAmount - currentAmount);
   const percentage = Math.min(100, (currentAmount / targetAmount) * 100);
 

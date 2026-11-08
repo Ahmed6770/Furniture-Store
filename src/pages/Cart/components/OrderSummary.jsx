@@ -3,12 +3,8 @@ import { Lock, ShieldCheck, RotateCcw, Headphones, Info } from "lucide-react";
 import { Link } from "react-router-dom";
 import { CartContext } from "../../../context/CartContext.jsx";
 
-function OrderSummary({
-  subtotal = 0,
-  shipping = 0,
-  showCheckoutButton = true,
-}) {
-  const { cartItems } = useContext(CartContext);
+function OrderSummary({ showCheckoutButton = true }) {
+  const { cartItems, subtotal = 0, shipping = 0 } = useContext(CartContext);
   const isCartEmpty = cartItems.length === 0;
   const total = isCartEmpty ? 0 : subtotal + shipping;
 
@@ -42,7 +38,7 @@ function OrderSummary({
             ${total.toFixed(2)}
           </span>
         </div>
-        <p className="mt-1 text-[11px] text-stone-400">
+        <p className="mt-1 text-xs text-stone-400">
           Tax included and shipping calculated at checkout.
         </p>
       </div>
