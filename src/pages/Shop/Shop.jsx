@@ -1,69 +1,49 @@
-import { useState, useEffect } from "react";
+import {useContext } from "react";
 import ProductGrid from "./components/ProductGrid.jsx";
 import FilterSidebar from "./components/FilterSidebar.jsx";
-import useProducts from "../../hooks/useProducts.js";
+import { ProductsContext } from "../../context/ProductsContext.jsx";
 import ShopHeader from "./components/ShopHeader.jsx";
 import EmptyState from "./components/EmptyState.jsx";
 import { SearchX } from "lucide-react";
 import NavigationControls from "../../components/shared/NavigationControls.jsx";
 import useShopFilters from "../../hooks/useShopFilters.js";
+import usePagination from "../../hooks/usePagination.js";
 
 function Shop() {
   // Getting data from shared context
-  const { products, loading, error } = useProducts();
+  const { products, loading, error } = useContext(ProductsContext);
 
   const {
-    search,
-    selectedCategory,
+    // Filter states
+    searchText,
+    selectedCategories,
     price,
     sortBy,
-    filteredProducts,
     sortedProducts,
+    // Action handlers
     handleCategoryChange,
     handlePriceChange,
     handleSearchChange,
     handleSortChange,
-    ResetAll,
+    clearFilters,
   } = useShopFilters(products);
 
-  // Pagination
-  const productsPerPage = 12;
-  const [currentPage, setCurrentPage] = useState(1);
-  const startIndex = (currentPage - 1) * productsPerPage;
-  const endIndex = startIndex + productsPerPage;
-
-  // scroll when page changes
-  useEffect(() => {
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth",
-    });
-  }, [currentPage]);
-
-  // Change pages function
-  const totalPages = Math.max(
-    1,
-    Math.ceil(sortedProducts.length / productsPerPage),
-  );
-
-  // Resets the pages number when searching
-  useEffect(() => {
-    setCurrentPage(1);
-  }, [search, selectedCategory, price, sortBy]);
+  const { currentPage, setCurrentPage, totalPages, startIndex, endIndex } =
+    usePagination(sortedProducts);
 
   return (
-    <main className="min-h-[60vh] space-y-6">
+    <main className="min-h-128 space-y-6">
       <ShopHeader
-        productsCount={filteredProducts.length}
+        productsCount={sortedProducts.length}
         handleSearchChange={handleSearchChange}
-        search={search}
+        searchText={searchText}
         sortBy={sortBy}
         handleSortChange={handleSortChange}
         handleCategoryChange={handleCategoryChange}
         handlePriceChange={handlePriceChange}
-        ResetAll={ResetAll}
+        clearFilters={clearFilters}
         price={price}
-        selectedCategory={selectedCategory}
+        selectedCategories={selectedCategories}
       />
 
       <article className="flex flex-col gap-6 px-4 sm:px-6 lg:flex-row lg:gap-8 lg:px-8">
@@ -71,9 +51,9 @@ function Shop() {
           <FilterSidebar
             handleCategoryChange={handleCategoryChange}
             handlePriceChange={handlePriceChange}
-            ResetAll={ResetAll}
+            clearFilters={clearFilters}
             price={price}
-            selectedCategory={selectedCategory}
+            selectedCategories={selectedCategories}
           />
         </aside>
 
@@ -88,7 +68,7 @@ function Shop() {
                 Fetching the latest furniture pieces for you
               </p>
             </div>
-          ) : error && products.length === 0 ? (
+          ) : error ? (
             <div className="py-20 text-center">
               <p className="text-lg font-bold text-red-600">
                 Unable to load products
@@ -103,7 +83,7 @@ function Shop() {
               title="No products found"
               description="We couldn't find any products matching your search or selected filters."
               buttonText="Clear Filters"
-              onClick={ResetAll}
+              onClick={clearFilters}
             />
           ) : (
             <>

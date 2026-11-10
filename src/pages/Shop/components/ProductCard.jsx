@@ -1,6 +1,6 @@
 import { useState, useContext } from "react";
 import { Link } from "react-router-dom";
-import { ShoppingCart, Check } from "lucide-react";
+import { ShoppingCart, Check, Star } from "lucide-react";
 import { CartContext } from "../../../context/CartContext";
 
 function ProductCard({ product }) {
@@ -16,33 +16,23 @@ function ProductCard({ product }) {
   }
 
   return (
-    <section className="group flex flex-col h-full overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm transition-all duration-300 hover:shadow-lg">
+    <section className="group flex flex-col h-full overflow-hidden rounded-2xl border border-stone-200 bg-white shadow-sm transition-all duration-300 hover:shadow-lg">
       <Link className="cursor-pointer relative block" to={`/product/${id}`}>
         <div className="overflow-hidden bg-stone-50/60 p-4 relative">
-          {product.badge && (
-            <span className={`absolute top-3 left-3 z-10 rounded-md px-2.5 py-1 text-xs font-semibold tracking-wide uppercase shadow-xs ${
-              product.badge === "Best Seller"
-                ? "bg-amber-700 text-white"
-                : product.badge === "New"
-                ? "bg-emerald-700 text-white"
-                : "bg-stone-800 text-white"
-            }`}>
-              {product.badge}
-            </span>
-          )}
           <img className="h-56 w-full object-contain transition-transform duration-300 group-hover:scale-105 ease-out"
           src={image} alt={name} />
         </div>
       </Link>
       <div className="flex flex-1 flex-col justify-between p-4">
         <div className="space-y-2">
-          <p className="text-sm font-medium text-gray-500">{category}</p>
-          <h3 className="line-clamp-2 min-h-[3.5rem] text-lg font-semibold text-gray-900 leading-snug">
+          <p className="text-sm font-medium text-stone-500">{category}</p>
+          <h3 className="line-clamp-2 min-h-14 text-lg font-semibold text-stone-900 leading-snug">
             {name}
           </h3>
-          <p className="text-sm text-yellow-500">
-            ⭐ {rating}{" "}
-            <span className="text-gray-500">({reviews} Reviews)</span>
+          <p className="text-sm text-amber-500 flex items-center gap-1">
+            <Star size={15} fill="currentColor" />
+            <span className="font-semibold text-stone-800">{rating}</span>
+            <span className="text-stone-500 font-normal">({reviews} Reviews)</span>
           </p>
         </div>
 
@@ -57,7 +47,7 @@ function ProductCard({ product }) {
                 text-white whitespace-nowrap shrink-0 transition-all duration-300
                 ${isAdded
                 ? "bg-emerald-600 scale-95"
-                : "bg-[#B88746] hover:bg-[#a67637] hover:scale-105"
+                : "bg-amber-700 hover:bg-amber-800 hover:scale-105"
             }`}
           >
             {isAdded ? (

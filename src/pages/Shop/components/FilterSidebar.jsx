@@ -7,14 +7,14 @@ function FilterSidebar({
   handleCategoryChange,
   handlePriceChange,
   price,
-  selectedCategory,
-  ResetAll,
+  selectedCategories = [],
+  clearFilters,
 }) {
   const [isOpenMobile, setIsOpenMobile] = useState(false);
 
   // filter counter
   const activeFiltersCount =
-    (selectedCategory?.length || 0) + (price < 3000 ? 1 : 0);
+    (selectedCategories?.length || 0) + (price < 3000 ? 1 : 0);
 
   const filterContent = (
     <section className="space-y-8">
@@ -23,7 +23,7 @@ function FilterSidebar({
         <h3 className="mb-4 font-semibold text-stone-800">Categories</h3>
         <div className="space-y-3">
           {categories.map((item) => {
-            const isChecked = selectedCategory.includes(item);
+            const isChecked = selectedCategories.includes(item);
             return (
               <label
                 className="flex cursor-pointer items-center justify-between rounded-xl px-3 py-2 text-sm text-stone-700 transition hover:bg-stone-100/70"
@@ -74,9 +74,7 @@ function FilterSidebar({
       <button
         type="button"
         className="w-full cursor-pointer rounded-xl border border-stone-300 py-3 text-sm font-medium transition hover:bg-stone-100"
-        onClick={() => {
-          ResetAll();
-        }}
+        onClick={clearFilters}
       >
         Clear Filters
       </button>
@@ -96,7 +94,7 @@ function FilterSidebar({
           <SlidersHorizontal size={17} className="text-amber-700" />
           <span>Filters</span>
           {activeFiltersCount > 0 && (
-            <span className="flex h-5 w-5 items-center justify-center rounded-full bg-amber-700 text-[11px] font-bold text-white">
+            <span className="flex h-5 w-5 items-center justify-center rounded-full bg-amber-700 text-xs font-bold text-white">
               {activeFiltersCount}
             </span>
           )}

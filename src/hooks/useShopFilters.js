@@ -1,111 +1,126 @@
-import { useState, useEffect } from "react";
+import { useEffect, useState, useMemo } from "react";
 import { useLocation } from "react-router-dom";
 
-function useShopFilters(products) {
+function useShopFilters(products = []) {
   const location = useLocation();
 
-  // states
-  const [search, setSearch] = useState("");
-  const [selectedCategory, setSelectedCategory] = useState([]);
+  const [searchText, setSearchText] = useState("");
+  const [selectedCategories, setSelectedCategories] = useState([]);
   const [price, setPrice] = useState(3000);
   const [sortBy, setSortBy] = useState("featured");
+  const search = searchText.trim().toLowerCase();
 
-  // Sync search & category state with incoming location.state
+  // Debounce 
+  const [debouncedSearch, setDebouncedSearch] = useState("");
+
   useEffect(() => {
-    if (location.state?.search) {
-      setSearch(location.state.search);
+    const timer = setTimeout(() => {
+      setDebouncedSearch(search);
+    }, 300);
+
+    return () => clearTimeout(timer);
+  }, [search]);
+
+  //  Sync filters from navigation
+  useEffect(() => {
+    // search
+    if (location.state?.search !== undefined) {
+      setSearchText(location.state.search);
+    } else {
+      setSearchText("");
     }
+
+    // Category
     if (location.state?.category) {
-      setSelectedCategory([location.state.category]);
+      setSelectedCategories([location.state.category]);
+    } else {
+      setSelectedCategories([]);
     }
   }, [location.state]);
 
+  // Search function
+  function handleSearchChange(e) {
+    setSearchText(e.target.value);
+  }
   // Category function
-  function handleCategoryChange(event) {
-    const clickedCategory = event.target.value;
-    const isSelected = selectedCategory.includes(clickedCategory);
-    if (isSelected) {
-      const newCategories = selectedCategory.filter(
-        (category) => category !== clickedCategory,
-      );
-      setSelectedCategory(newCategories);
-    } else {
-      setSelectedCategory((prev) => [...prev, clickedCategory]);
-    }
-  }
-  ////// filtering //////
-
-  const filteredProducts = (products || []).filter((product) => {
-    const matchesSearch =
-      (product.name || "").toLowerCase().includes(search.toLowerCase()) ||
-      (product.category || "").toLowerCase().includes(search.toLowerCase());
-    const matchesPrice = product.price <= price; // Price
-    let matchesCategory = true; // Category
-
-    // Category filtering
-    if (selectedCategory.length > 0) {
-      matchesCategory = selectedCategory.some(
-        (cat) => (product.category || "").toLowerCase() === cat.toLowerCase(),
-      );
-    }
-    return matchesPrice && matchesCategory && matchesSearch;
-  });
-
-  // SortBy filter
-  const sortedProducts = [...filteredProducts];
-  if (sortBy === "priceLow") {
-    sortedProducts.sort((a, b) => {
-      return a.price - b.price;
-    });
-  }
-  if (sortBy === "priceHigh") {
-    sortedProducts.sort((a, b) => {
-      return b.price - a.price;
-    });
-  }
-  if (sortBy === "highestRated") {
-    sortedProducts.sort((a, b) => {
-      return b.rating - a.rating;
+  function handleCategoryChange(e) {
+    const selectedCategory = e.target.value;
+    setSelectedCategories((prev) => {
+      if (prev.includes(selectedCategory)) {
+        return prev.filter((category) => category !== selectedCategory);
+      } else {
+        return [...prev, selectedCategory];
+      }
     });
   }
   // Price function
-  function handlePriceChange(event) {
-    setPrice(Number(event.target.value));
+  function handlePriceChange(e) {
+    setPrice(Number(e.target.value));
+  }
+  // Sort function
+  function handleSortChange(e) {
+    setSortBy(e.target.value);
   }
 
-  // Reset function
-  function ResetAll() {
+  // useMemo
+  const sortedProducts = useMemo(() => {
+    // 1. Search filter
+    const filteredBySearch = products.filter((product) => {
+      return (
+        product.name.toLowerCase().includes(debouncedSearch) ||
+        product.description.toLowerCase().includes(debouncedSearch)
+      );
+    });
+
+    // 2. Category filter
+    const filteredByCategory = filteredBySearch.filter((item) => {
+      return (
+        selectedCategories.length === 0 ||
+        selectedCategories.includes(item.category)
+      );
+    });
+
+    // 3. Price filter
+    const filteredByPrice = filteredByCategory.filter((item) => {
+      return item.price <= price;
+    });
+
+    // 4. Sort filter
+    const finalProducts = [...filteredByPrice];
+    if (sortBy === "priceLow") {
+      finalProducts.sort((a, b) => a.price - b.price);
+    } else if (sortBy === "priceHigh") {
+      finalProducts.sort((a, b) => b.price - a.price);
+    } else if (sortBy === "highestRated") {
+      finalProducts.sort((a, b) => b.rating - a.rating);
+    }
+
+    return finalProducts;
+  }, [products, debouncedSearch, selectedCategories, price, sortBy]);
+  // End of useMemo
+
+  // Clear filters function
+  function clearFilters() {
+    setSelectedCategories([]);
     setPrice(3000);
-    setSelectedCategory([]);
-    setSearch("");
     setSortBy("featured");
+    setSearchText("");
+    setDebouncedSearch("");
   }
 
-  // Search function
-  function handleSearchChange(event) {
-    setSearch(event.target.value);
-  }
-
-  // SoryBy function
-  function handleSortChange(event) {
-    setSortBy(event.target.value);
-  }
-
-  // return
   return {
-    search,
-    setSearch,
-    selectedCategory,
+    // Filter states
+    searchText,
+    selectedCategories,
     price,
     sortBy,
-    filteredProducts,
     sortedProducts,
+    // Action handlers
     handleCategoryChange,
     handlePriceChange,
     handleSearchChange,
     handleSortChange,
-    ResetAll,
+    clearFilters,
   };
 }
-
 export default useShopFilters;
